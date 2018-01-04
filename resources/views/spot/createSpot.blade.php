@@ -52,7 +52,7 @@
 
     <div class="form-group">
       <label for="photoSpot">Photo</label>
-      <input type="file" class="form-control-file" id="photoSpot">
+      <input id="photoSpot" type="file" class="file" data-preview-file-type="text">
     </div>
 
     <div class="form-check">

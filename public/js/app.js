@@ -978,6 +978,7 @@ module.exports = __webpack_require__(42);
  */
 
 __webpack_require__(11);
+__webpack_require__(52);
 
 window.Vue = __webpack_require__(35);
 
@@ -43006,6 +43007,24 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */
+/***/ (function(module, exports) {
+
+
+$(document).ready(function () {
+    $("#photoSpot").fileinput();
+});
 
 /***/ })
 /******/ ]);
