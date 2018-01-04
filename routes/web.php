@@ -26,10 +26,8 @@ Route::get('/createSpot', function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-<<<<<<< HEAD
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-=======
->>>>>>> ad688cdc1c377ad42cf41f85033030c2b33caa6c
