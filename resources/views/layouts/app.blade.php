@@ -98,6 +98,12 @@
         @yield('content')
     </div>
 
+    @yield('pagescript')
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBggcVg4ZgQ_92dQlQsOXbuEqXoitmd98c">
+    </script>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
