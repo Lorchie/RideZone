@@ -1,7 +1,7 @@
 $( document ).ready(function() {
 
   initMap();
-  console.log("yes");
+  console.log("yefffs");
 
 
   function initMap() {
@@ -18,13 +18,6 @@ $( document ).ready(function() {
           ]
         }
       ]
-
-      map = new google.maps.Map(document.getElementById('map'), {
-      mapTypeControl: false,
-      styles: remove_poi,
-      streetViewControl: false,
-      disableDefaultUI: true
-    });
 
       var latlng = new google.maps.LatLng(47, 1.80);
       var myOptions = {

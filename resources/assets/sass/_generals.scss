@@ -5,6 +5,11 @@
   width: 100%;
 }
 
+body
+{
+  color: white;
+}
+
 
 .title
 {
@@ -14,8 +19,8 @@
 .info
 {
   padding: 10px;
-  color: #536577;
-  background-color: #cce5ff;
+  color: white;
+  background-color: rgba(137, 215, 95, 0.69);
   border-radius: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
