@@ -19,9 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/createSpot', function() {
-    return Response::view('spot/createSpot');
-});
+Route::get('createSpot', 'SpotController@createSpot');
 
 Auth::routes();
 
