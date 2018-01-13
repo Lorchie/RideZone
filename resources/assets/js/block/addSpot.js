@@ -61,21 +61,7 @@ $( document ).ready(function() {
 
     console.log($("#addSpotForm").serializeArray());
 
-    $.ajax({
-      url: 'submitSpot',
-      type: 'POST',
-      data: $("#addSpotForm").serialize()
-    },
-    function (data)
-    {
-      console.log(data);
-    });
-
-
-
-
-
-
+    $("#addSpotForm").submit();
   });
 
 });

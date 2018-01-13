@@ -4,7 +4,8 @@
 
   <h1 class="title">Création d'un Spot</h1>
 
-  <form id="addSpotForm" class="col-sm-8 col-md-6 col-md-offset-3 col-sm-offset-2">
+
+  <form id="addSpotForm" method="post" action="/submitSpot" class="col-sm-8 col-md-6 col-md-offset-3 col-sm-offset-2" enctype="multipart/form-data">
 
     {{ csrf_field() }}
 
@@ -62,7 +63,7 @@
 
     <div class="form-group">
       <label for="photoSpot">Photo</label>
-      <input name="photoSpot" id="photoSpot" type="file" class="file" data-preview-file-type="text">
+      <input name="photoSpot" id="photoSpot" type="file">
     </div>
 
     <div class="form-map">
