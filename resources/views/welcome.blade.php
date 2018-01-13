@@ -1,23 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 presentation">
+      <h1 class="title main_title">Bienvenue sur RideZone</h1>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+      <div class="main_text" role="alert">
+        <p>  RideZone est un site regroupant les spots de sport de glisse partout en France !
+          Vous y trouverez des infos des autres riders pour chacun des posts afin de rider
+          dans les meilleurs conditions. Partager votre expérience avec la communauté en
+          ajoutant des posts, des commentaires et des conseils sur votre spot favoris.</p>
+        <p>Peace !</p>
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+      </div>
+
+
+      <div class="button_connexion">
+        <a href="{{ route('login') }}">Connection</a></li>
+      </div>
     </div>
-</div>
+
+  </div>
+
+
+
 @endsection

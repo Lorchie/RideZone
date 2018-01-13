@@ -1,4 +1,24 @@
+#map
+{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+
 .title
 {
   text-align: center;
+}
+
+.info
+{
+  padding: 10px;
+  color: #536577;
+  background-color: #cce5ff;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  border-color: #80b7f2;
 }

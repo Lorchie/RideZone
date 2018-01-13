@@ -12,7 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+  if (Auth::guest()){
+     return view('welcome');
+  }
+  else {
+    return redirect('/home');
+  }
+
 });
 
 Auth::routes();
@@ -21,10 +28,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('createSpot', 'SpotController@createSpot');
 
+Route::get('/createPost', function() {
+    return Response::view('spot/createPost');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

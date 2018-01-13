@@ -5,6 +5,10 @@
 <div class="row">
   <h1 class="title">Création d'un Spot</h1>
 
+  <div class="info info_primary" role="alert">
+    Explication d'un Spot
+  </div>
+
   <form class="col-sm-4 col-sm-offset-4">
     <div class="form-group">
       <label for="nomSpot">Titre</label>
