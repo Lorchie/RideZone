@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\spot;
 
 class SpotController extends Controller
 {
@@ -20,5 +21,10 @@ class SpotController extends Controller
         echo $request->input('lat');;
 
         return "lol";
+      }
+
+      protected function getSpotForMap(){
+          $spot=spot::all();
+          return $spot;
       }
 }

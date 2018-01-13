@@ -79,7 +79,7 @@ module.exports = __webpack_require__(45);
 $(document).ready(function () {
 
   initMap();
-  console.log("yefffs");
+  var map2;
 
   function initMap() {
 
@@ -100,8 +100,26 @@ $(document).ready(function () {
       disableDefaultUI: true,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+    map2 = new google.maps.Map(document.getElementById("map"), myOptions);
   }
+  $.ajax({
+    type: "GET",
+    url: "/getSpotForMap",
+    success: function success(data) {
+      console.log(data);
+      for (var i = 0; i < data.length; i++) {
+        var obj = data[i];
+        var pos = { lat: obj.latitude, lng: obj.longitude };
+        marker = new google.maps.Marker({
+          position: pos,
+          map: map2,
+          title: "ok"
+        });
+      }
+    }
+  });
+
+  console.log("ok !!!");
 });
 
 /***/ })

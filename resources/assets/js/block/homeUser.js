@@ -1,12 +1,12 @@
 $( document ).ready(function() {
 
   initMap();
-  console.log("yefffs");
+  var map2;
 
 
   function initMap() {
 
-    var map = $("body").before('<div id="map"></div>')
+    var map = $("body").before('<div id="map"></div>');
 
       //remove useless icon
       var remove_poi = [
@@ -17,7 +17,7 @@ $( document ).ready(function() {
             { "visibility": "off" }
           ]
         }
-      ]
+      ];
 
       var latlng = new google.maps.LatLng(47, 1.80);
       var myOptions = {
@@ -27,8 +27,27 @@ $( document ).ready(function() {
           disableDefaultUI: true,
           mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      var map = new google.maps.Map(document.getElementById("map"),
+       map2 = new google.maps.Map(document.getElementById("map"),
               myOptions);
   }
+    $.ajax({
+        type: "GET",
+        url: "/getSpotForMap",
+        success: function(data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                var obj = data[i];
+                var pos = {lat: obj.latitude, lng: obj.longitude};
+                marker = new google.maps.Marker({
+                    position: pos,
+                    map: map2,
+                    title: "ok"
+                });
+            }
+        }
+    });
+
+  console.log("ok !!!");
+
 
 });
