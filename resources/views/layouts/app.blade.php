@@ -87,6 +87,7 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
+                                    <li><a href="/creerSpot">Créer un Spot</a></li>
                                 </ul>
                             </li>
                         @endguest

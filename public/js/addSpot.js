@@ -60,31 +60,29 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ 	return __webpack_require__(__webpack_require__.s = 46);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 44:
+/***/ 46:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(45);
+module.exports = __webpack_require__(47);
 
 
 /***/ }),
 
-/***/ 45:
+/***/ 47:
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
 
+  var map;
+
   initMap();
-  console.log("yefffs");
 
   function initMap() {
-
-    var map = $("body").before('<div id="map"></div>');
-
     //remove useless icon
     var remove_poi = [{
       "featureType": "poi",
@@ -96,12 +94,50 @@ $(document).ready(function () {
     var myOptions = {
       zoom: 7,
       center: latlng,
+      gestureHandling: 'greedy',
+      zoomControl: true,
+      scrollwheel: true,
       streetViewControl: false,
       disableDefaultUI: true,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
-    var map = new google.maps.Map(document.getElementById("map"), myOptions);
+    map = new google.maps.Map(document.getElementById("mapAddSpot"), myOptions);
+
+    var marker = new google.maps.Marker({
+      position: latlng,
+      map: map,
+      title: 'Hello World!'
+    });
+
+    google.maps.event.addListener(map, 'center_changed', function () {
+      // 0.1 seconds after the center of the map has changed,
+      // set back the marker position.
+      window.setTimeout(function () {
+        var center = map.getCenter();
+        marker.setPosition(center);
+      }, 0);
+    });
   }
+
+  $("#submitSpot").click(function () {
+    var center = map.getCenter();
+    var lat = center.lat();
+    var long = center.lng();
+
+    $("#addSpotForm").append('<input type="hidden" name="lat" value="' + lat + '" /> ');
+
+    $("#addSpotForm").append('<input type="hidden" name="long" value="' + long + '" /> ');
+
+    console.log($("#addSpotForm").serializeArray());
+
+    $.ajax({
+      url: 'submitSpot',
+      type: 'POST',
+      data: $("#addSpotForm").serialize()
+    }, function (data) {
+      console.log(data);
+    });
+  });
 });
 
 /***/ })

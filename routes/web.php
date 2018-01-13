@@ -26,7 +26,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('createSpot', 'SpotController@createSpot');
+Route::get('/createSpot', function() {
+    return Response::view('spot/createSpot');
+});
+
+Route::post('/submitSpot', 'SpotController@create');
 
 Route::get('/createPost', function() {
     return Response::view('spot/createPost');
