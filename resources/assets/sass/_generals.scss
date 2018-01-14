@@ -27,3 +27,40 @@ body
 
   border-color: #80b7f2;
 }
+
+#button_filter
+{
+
+  position: absolute;
+  z-index: 999;
+}
+
+#ask_user_position
+{
+  display: block;
+  z-index: 999;
+  position: absolute;
+  position: center;
+}
+
+#filter_menu
+{
+  position: absolute;
+  z-index: 999;
+  background-color: white;
+  visibility: hidden;
+  select
+  {
+    background-color: #3d6983;
+    color: white;
+  }
+  label
+  {
+    color: #0d3625;
+  }
+  #button_validate{
+    color: white;
+    background-color: #1f648b;
+  }
+
+}
