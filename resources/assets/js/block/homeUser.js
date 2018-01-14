@@ -29,6 +29,34 @@ $( document ).ready(function() {
       };
       var map = new google.maps.Map(document.getElementById("map"),
               myOptions);
+
+
   }
+
+    $("#button_filter").click(function() {
+            $("#filter_menu").css({"visibility":"visible"});
+});
+    $("#button_hide_menu").click(function() {
+        $("#filter_menu").css({"visibility":"hidden"});
+    });
+
+    $('.for_family').on('change', function() {
+
+    })
+    $('#frequentationSpot').on('change', function() {
+
+    });
+    $('#typePlage').on('change', function() {
+
+    });
+    $('#discipline').on('change', function() {
+
+    });
+    $('#sport').on('change', function() {
+
+    });
+
+
+
 
 });

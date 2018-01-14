@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 class SpotController extends Controller
 {
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
       protected function create(Request $request)
       {
         $nameSpot = $request->input('nameSpot');
@@ -16,9 +21,12 @@ class SpotController extends Controller
         $dangerSpot = $request->input('dangerSpot');
         $interdictionSpot = $request->input('interdictionSpot');
         $parkingSpot = $request->input('interdictionSpot');
+        //$pathPhoto =
+        $latitude = $request->input('lat');
+        $longitude = $request->input('long');
+        //echo $request->input('lat');
+        //echo $request->input('long');
 
-        echo $request->input('lat');;
-
-        return "lol";
+        return view('home');
       }
 }
