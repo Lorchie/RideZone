@@ -17,15 +17,15 @@ class CreateSpotTable extends Migration
             $table->increments('id');
             $table->string('nom')->unique();
             $table->string('description');
-            $table->binary('photo');
+            $table->string('photo');
             $table->enum('typePlage',['sable','galets','herbe','beton','rocheux','terre']);
             $table->string('interdiction');
             $table->boolean('famille');
             $table->enum('frequentation',['faible','moyen','beaucoup']);
             $table->string('danger');
             $table->string('accesParking');
-            $table->float('longitude')->unique();
-            $table->float('latitude')->unique();
+            $table->float('longitude',8,6)->unique();
+            $table->float('latitude',8,6)->unique();
             $table->enum('valider',['enCours','aVerifier','ok']);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');

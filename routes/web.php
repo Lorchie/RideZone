@@ -30,6 +30,8 @@ Route::get('/creerSpot', function() {
     return Response::view('spot/createSpot');
 });
 
+Route::get('/getSpotForMap', 'SpotController@getSpotForMap');
+
 Route::post('/submitSpot', 'SpotController@create');
 
 Route::get('/createPost', function() {
