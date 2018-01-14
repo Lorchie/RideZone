@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class spot extends Model
 {
-    //
+    protected $table = 'spot';
 }

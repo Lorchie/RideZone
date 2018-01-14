@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
+use App\spot;
 use DB;
 
 class SpotController extends Controller
@@ -56,5 +57,10 @@ class SpotController extends Controller
         return "fgd";
         
        
+      }
+
+      protected function getSpotForMap(){
+          $spot=spot::all();
+          return $spot;
       }
 }

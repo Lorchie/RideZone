@@ -60,7 +60,6 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -87,8 +86,34 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
-                                    <li><a href="/creerSpot">Créer un Spot</a></li>
                                 </ul>
+                            </li>
+                        @endguest
+                    </ul>
+                    <ul class="nav navbar-nav navbar-left">
+                        <!-- Nothing to show for guest -->
+                        @guest
+
+                        @else
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    Spot
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+
+                                    <li><a href="/creerSpot">Créer un Spot</a></li>
+
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                    <div class="navbar-form navbar-left">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Rechercher">
+                                        </div>
+                                        <button  class="btn btn-default">Valider</button>
+                                    </div>
+
                             </li>
                         @endguest
                     </ul>
