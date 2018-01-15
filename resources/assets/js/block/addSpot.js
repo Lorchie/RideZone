@@ -37,9 +37,7 @@ $( document ).ready(function() {
                   title: 'Hello World!'
             });
 
-            google.maps.event.addListener(map, 'center_changed', function() {
-                // 0.1 seconds after the center of the map has changed,
-                // set back the marker position.
+            google.maps.event.addListener(map, 'center_changed', function() {              
                 window.setTimeout(function() {
                   var center = map.getCenter();
                   marker.setPosition(center);

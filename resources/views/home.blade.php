@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
 @endsection
 @section('body')
   <button id="button_filter"> <img src="{{asset('image/filter.png')}}"></button>
@@ -49,5 +47,6 @@
 @endsection
 
 @section('pagescript')
+  <script src="{{ asset('js/geocomplete.js') }}"></script>
   <script src="{{ asset('js/homeUser.js') }}"></script>
 @stop

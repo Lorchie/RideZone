@@ -14,6 +14,18 @@ class SpotController extends Controller
       {
         $user = Auth::user();
 
+        $validatedData = $request->validate([
+          'nom' => 'required|unique:spot|max:255',
+          'description' => 'required|max:255',
+          'photo' => 'required|image',
+          'interdiction' => 'required|string|max:255',
+          'frequentation' => 'required|string|max:255',
+          'famille' => 'required|boolean',
+          'danger' => 'required|string|max:255',
+          'latitude' => 'required',
+          'longitude' => 'required'
+          
+        ]);
 
 
         $nameSpot = $request->input('nom');
@@ -36,7 +48,7 @@ class SpotController extends Controller
 
         }
 
-
+        
         $validatedData = $request->validate([
           'nom' => 'required|unique:spot|max:255',
           'description' => 'required|max:255',
@@ -47,8 +59,8 @@ class SpotController extends Controller
           'danger' => 'required|max:255',
           'latitude' => 'required',
           'longitude' => 'required'
-
-
+          
+          
         ]);
 
 
