@@ -58,12 +58,14 @@ $( document ).ready(function() {
         }
     });
 
-  console.log("ok !!!");
+    console.log("ok !!!");
 
 
     $("#button_filter").click(function() {
-            $("#filter_menu").css({"visibility":"visible"});
-});
+        console.log("fsd");
+        $("#filter_menu").css({"visibility":"visible"});
+    });
+
     $("#button_hide_menu").click(function() {
         $("#filter_menu").css({"visibility":"hidden"});
     });

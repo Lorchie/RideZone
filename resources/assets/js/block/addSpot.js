@@ -54,28 +54,18 @@ $( document ).ready(function() {
     var long = center.lng();
 
     $("#addSpotForm")
-    .append('<input type="hidden" name="lat" value="'+ lat + '" /> ');
+    .append('<input type="hidden" name="latitude" value="'+ lat + '" /> ');
 
     $("#addSpotForm")
-    .append('<input type="hidden" name="long" value="'+ long + '" /> ');
+    .append('<input type="hidden" name="longitude" value="'+ long + '" /> ');
+
+    if(document.getElementById("family").checked) {
+      document.getElementById('family_hidden').disabled = true;
+    }
 
     console.log($("#addSpotForm").serializeArray());
 
-    $.ajax({
-      url: 'submitSpot',
-      type: 'POST',
-      data: $("#addSpotForm").serialize()
-    },
-    function (data)
-    {
-      console.log(data);
-    });
-
-
-
-
-
-
+    $("#addSpotForm").submit();
   });
 
 });

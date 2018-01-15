@@ -8411,6 +8411,10 @@ form {
   margin-bottom: 50px;
 }
 
+.label_auth {
+  color: black;
+}
+
 .vresize {
   resize: vertical;
   min-height: 100px;

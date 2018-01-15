@@ -4,7 +4,21 @@
 
   <h1 class="title">Création d'un Spot</h1>
 
-  <form id="addSpotForm" class="col-sm-8 col-md-6 col-md-offset-3 col-sm-offset-2">
+ 
+
+
+  <form id="addSpotForm" method="post" action="/submitSpot" class="col-sm-8 col-md-6 col-md-offset-3 col-sm-offset-2" enctype="multipart/form-data">
+
+    @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+    @endif
+
 
     {{ csrf_field() }}
 
@@ -13,14 +27,14 @@
     </div>
 
     <div class="form-group">
-      <label for="nameSpot">Titre</label>
-      <input name="nameSpot" type="text" class="form-control"
+      <label for="nom">Titre</label>
+      <input name="nom" type="text" class="form-control"
       id="nameSpot" placeholder="Entrer le titre du spot">
     </div>
 
     <div class="form-group">
-      <label for="descriptionSpot">Description</label>
-      <textarea name="descriptionSpot" type="text"  rows="3" class="form-control vresize"
+      <label for="description">Description</label>
+      <textarea name="description" type="text"  rows="3" class="form-control vresize"
       id="descriptionSpot" placeholder="Entrer une description du spot"></textarea>
     </div>
 
@@ -35,34 +49,34 @@
     </div>
 
     <div class="form-group">
-      <label for="frequentationSpot">Fréquentation</label>
-      <select name="frequentationSpot" class="form-control" id="frequentationSpot">
+      <label for="frequentation">Fréquentation</label>
+      <select name="frequentation" class="form-control" id="frequentationSpot">
         <option>1</option>
         <option>2</option>
       </select>
     </div>
 
     <div class="form-group">
-      <label for="dangerSpot">Danger</label>
-      <textarea  name="dangerSpot" type="text"  rows="3" class="form-control vresize"
+      <label for="danger">Danger</label>
+      <textarea  name="danger" type="text"  rows="3" class="form-control vresize"
       id="dangerSpot" placeholder="Entrer des éventuels dangers sur le spot"></textarea>
     </div>
 
     <div class="form-group">
-      <label for="interdictionSpot">Interdiction</label>
-      <textarea name="interdictionSpot" type="text"  rows="3" class="form-control vresize"
+      <label for="interdiction">Interdiction</label>
+      <textarea name="interdiction" type="text"  rows="3" class="form-control vresize"
       id="interdictionSpot" placeholder="Entrer des éventuels commentaires sur les interdictions"></textarea>
     </div>
 
     <div class="form-group">
-      <label for="parkingSpot">Accès Parking</label>
-      <textarea name="parkingSpot" type="text"  rows="3" class="form-control vresize"
+      <label for="accesParking">Accès Parking</label>
+      <textarea name="accesParking" type="text"  rows="3" class="form-control vresize"
       id="parkingSpot" placeholder="Entrer des éventuels parking près du spot"></textarea>
     </div>
 
     <div class="form-group">
-      <label for="photoSpot">Photo</label>
-      <input name="photoSpot" id="photoSpot" type="file" class="file" data-preview-file-type="text">
+      <label for="photo">Photo</label>
+      <input name="photo" id="photoSpot" type="file">
     </div>
 
     <div class="form-map">
@@ -73,8 +87,9 @@
     </div>
 
     <div class="form-check">
-      <input name="familySpot" type="checkbox" class="form-check-input">
-      <label class="form-check-label" for="familleBoolean">Le spot est adapté au famille ? </label>
+      <input id="family" name="famille" type="checkbox" value="1" class="form-check-input">
+      <input id="family_hidden" type='hidden' value='0' name='famille'>
+      <label class="form-check-label" for="famille">Le spot est adapté au famille ? </label>
     </div>
 
     <button type="button" id="submitSpot" class="btn btn-primary">Submit</button>

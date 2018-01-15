@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 46);
+/******/ 	return __webpack_require__(__webpack_require__.s = 39);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 46:
+/***/ 39:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(47);
+module.exports = __webpack_require__(40);
 
 
 /***/ }),
 
-/***/ 47:
+/***/ 40:
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
@@ -124,19 +124,17 @@ $(document).ready(function () {
     var lat = center.lat();
     var long = center.lng();
 
-    $("#addSpotForm").append('<input type="hidden" name="lat" value="' + lat + '" /> ');
+    $("#addSpotForm").append('<input type="hidden" name="latitude" value="' + lat + '" /> ');
 
-    $("#addSpotForm").append('<input type="hidden" name="long" value="' + long + '" /> ');
+    $("#addSpotForm").append('<input type="hidden" name="longitude" value="' + long + '" /> ');
+
+    if (document.getElementById("family").checked) {
+      document.getElementById('family_hidden').disabled = true;
+    }
 
     console.log($("#addSpotForm").serializeArray());
 
-    $.ajax({
-      url: 'submitSpot',
-      type: 'POST',
-      data: $("#addSpotForm").serialize()
-    }, function (data) {
-      console.log(data);
-    });
+    $("#addSpotForm").submit();
   });
 });
 
