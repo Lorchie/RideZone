@@ -29,6 +29,7 @@ Route::get('/creerSpot', function() {
 });
 
 Route::get('/getSpotForMap', 'SpotController@getSpotForMap');
+Route::get('/getFilterSpotForMap', 'SpotController@getFilterSpotForMap');
 
 Route::post('/submitSpot', 'SpotController@create');
 

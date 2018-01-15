@@ -43,24 +43,16 @@ body
   position: center;
 }
 
-#filter_menu
-{
+#filter_menu {
   position: absolute;
   z-index: 999;
   background-color: white;
   visibility: hidden;
-  select
-  {
+  select {
     background-color: #3d6983;
     color: white;
   }
-  label
-  {
-    color: #0d3625;
+  label {
+    color: #3d6983;
   }
-  #button_validate{
-    color: white;
-    background-color: #1f648b;
-  }
-
 }

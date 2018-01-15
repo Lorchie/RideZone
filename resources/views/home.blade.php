@@ -10,33 +10,37 @@
   <br>
   <div id="filter_menu" >
     <label>Adapté à la famille</label>
-    <input type="radio" class="for_family" name="for_family" value="for_family">
+    <input type="radio" class="filtre" name="for_family">
     <button id="button_hide_menu"><img src="{{asset("image/double-left-chevron.png")}}"></button>
     <br>
     <label>Frequentation</label>
-    <select name="frequentationSpot" id="frequentationSpot">
-      <option>1</option>
-      <option>2</option>
+    <select name="frequentationSpot" class="filtre" id="frequentationSpot">
+      <option value="*"> </option>
+      <option class="optionFrequentation" value="faible">1</option>
+      <option class="optionFrequentation" value="2">2</option>
     </select>
     <br>
     <label>Type de plage</label>
-    <select name="typePlage" id="typePlage">
-      <<option value="1">Sable</option>
-      <option value="2">Galet</option>
-      <option value="3">Herbe</option>
-      <option value="4">Béton</option>
+    <select name="typePlage" class="filtre" id="typePlage">
+      <option value="*"> </option>
+      <option class="optionPlage" value="Sable">Sable</option>
+      <option class="optionPlage" value="Galet">Galet</option>
+      <option class="optionPlage" value="Herbe">Herbe</option>
+      <option class="optionPlage" value="Béton">Béton</option>
     </select>
     <br>
     <label>Discipline</label>
-    <select name="discipline" id="discipline">
-      <option>1</option>
-      <option>2</option>
+    <select name="discipline" class="filtre" id="discipline">
+      <option value="*"> </option>
+      <option  class="optionDiscipline" value="1">1</option>
+      <option class="optionDiscipline" value="2">2</option>
     </select>
     <br>
     <label>Sport</label>
-    <select name="sport" id="sport">
-      <option>1</option>
-      <option>2</option>
+    <select name="sport" class="filtre" id="sport">
+      <option value="*"> </option>
+      <option class="optionSport" value="1">1</option>
+      <option class="optionSport" value="2">2</option>
     </select>
   </div>
   <br>

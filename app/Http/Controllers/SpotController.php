@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
+use App\spot;
 use DB;
-use App\Spot;
+
 
 class SpotController extends Controller
 {
@@ -25,6 +26,7 @@ class SpotController extends Controller
           
         ]);
 
+
         $nameSpot = $request->input('nom');
         $descriptionSpot = $request->input('description');
         $typePlage =  $request->input('typePlage');
@@ -36,14 +38,30 @@ class SpotController extends Controller
         $long = $request->input('longitude');
 
         $id = Auth::id();
-    
+
         if ($_FILES['photo'] > 0) $erreur = "Erreur lors du transfert";
 
         if($request->hasFile('photo'))
         {
             $path = $request->photo->store('imagesSpots');
-          
+
         }
+
+        
+        $validatedData = $request->validate([
+          'nom' => 'required|unique:spot|max:255',
+          'description' => 'required|max:255',
+          'photo' => 'required|image',
+          'interdiction' => 'required|max:255',
+          'frequentation' => 'required|max:255',
+          'famille' => 'required|boolean',
+          'danger' => 'required|max:255',
+          'latitude' => 'required',
+          'longitude' => 'required'
+          
+          
+        ]);
+
 
         $test = DB::table('spot')->insert(
           [
@@ -64,10 +82,10 @@ class SpotController extends Controller
           ]
         );
 
-     
+
         return redirect()->action('HomeController@index');
-        
-       
+
+
       }
 
       protected function getSpotForMap(){
@@ -75,4 +93,19 @@ class SpotController extends Controller
         return $spot;
       }
 
+      protected function getFilterSpotForMap(Request $request){
+            $familleLabel = $request->familleLabel;
+            $familleValue = $request->familleValue;
+            $typePlageLabel = $request->typePlageLabel;
+            $typePlageValue = $request->typePlageValue;
+            $frequentationLabel = $request->frequentationLabel;
+            $frequentationValue = $request->frequentationValue;
+
+            $spot = DB::table('spot')
+                ->where($familleLabel, $familleValue)
+                ->whereIn($typePlageLabel, $typePlageValue)
+                ->whereIn($frequentationLabel,$frequentationValue)
+                ->get();
+              return $spot;
+      }
 }
