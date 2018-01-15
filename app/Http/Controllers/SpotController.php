@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\post;
 use Auth;
 use Illuminate\Http\Request;
 use App\spot;
@@ -82,6 +83,7 @@ class SpotController extends Controller
       }
 
       protected function getFilterSpotForMap(Request $request){
+
             $familleLabel = $request->familleLabel;
             $familleValue = $request->familleValue;
             $typePlageLabel = $request->typePlageLabel;
@@ -90,9 +92,12 @@ class SpotController extends Controller
             $frequentationValue = $request->frequentationValue;
 
             $spot = DB::table('spot')
+                //->leftJoin('post', 'spot.id', '=', 'post.spot_id')
+                //->where('post.sport_id', '1')
                 ->where($familleLabel, $familleValue)
                 ->whereIn($typePlageLabel, $typePlageValue)
                 ->whereIn($frequentationLabel,$frequentationValue)
+
                 ->get();
               return $spot;
       }
