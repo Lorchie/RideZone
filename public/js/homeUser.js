@@ -241,9 +241,7 @@ $(document).ready(function () {
 
             },
             success: function success(data) {
-
-                console.log(markers);
-
+                console.log(data);
                 for (var i = 0; i < markers.length; i++) {
                     markers[i].setMap(null);
                 }
@@ -260,9 +258,9 @@ $(document).ready(function () {
                         info: contentString,
                         title: "ok"
                     });
-                    markers.push(marker);
-                    marker.addListener('click', function () {
-                        infowindow.open(map, marker);
+                    google.maps.event.addListener(marker, 'click', function () {
+                        infowindow.setContent(this.info);
+                        infowindow.open(map, this);
                     });
                     markers.push(marker);
                 }

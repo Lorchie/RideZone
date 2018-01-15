@@ -196,9 +196,7 @@ $( document ).ready(function() {
 
             },
             success: function (data) {
-
-                console.log(markers);
-
+                console.log(data);
                 for (var i = 0; i < markers.length; i++) {
                     markers[i].setMap(null);
                 }
@@ -206,7 +204,6 @@ $( document ).ready(function() {
                     var obj = data[i];
                     var infowindow = new google.maps.InfoWindow();
                     var contentString = 'Nom: ' + obj.nom + '<br>'+ 'Déscription: ' + obj.description + '<br><button value="Submit">Voir plus</button>' ;
-
 
                     var pos = {lat: obj.latitude, lng: obj.longitude};
 

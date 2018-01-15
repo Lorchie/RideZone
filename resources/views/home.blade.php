@@ -8,7 +8,7 @@
   <br>
   <div id="filter_menu" >
     <label>Adapté à la famille</label>
-    <input type="radio" class="filtre" name="for_family" id="for_family">
+    <input type="checkbox" class="filtre" name="for_family" id="for_family">
     <button id="button_hide_menu"><img src="{{asset("image/double-left-chevron.png")}}"></button>
     <br>
     <label>Frequentation</label>
