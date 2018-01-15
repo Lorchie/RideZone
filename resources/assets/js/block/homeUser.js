@@ -1,22 +1,26 @@
 $( document ).ready(function() {
 
-  
-  var map2;
+    var markers = [];
+    var map2;
+    initMap();
+    
+    initSearch();
+    
 
 
 
 
-  initMap();
+
 
   function initSearch()
   {
     var input = $("#input_search")[0];
     var autocomplete = new google.maps.places.Autocomplete(input);
-    autocomplete.bindTo('bounds', map);
+    autocomplete.bindTo('bounds', map2);
 
     var infowindow = new google.maps.InfoWindow();
        var marker = new google.maps.Marker({
-         map: map,
+         map: map2,
          anchorPoint: new google.maps.Point(0, -29)
        });
 
@@ -33,10 +37,10 @@ $( document ).ready(function() {
 
         // If the place has a geometry, then present it on a map.
         if (place.geometry.viewport) {
-          map.fitBounds(place.geometry.viewport);
+            map2.fitBounds(place.geometry.viewport);
         } else {
-          map.setCenter(place.geometry.location);
-          map.setZoom(17);  // Why 17? Because it looks good.
+            map2.setCenter(place.geometry.location);
+            map2.setZoom(17);  // Why 17? Because it looks good.
         }
         marker.setIcon(/** @type {google.maps.Icon} */({
           size: new google.maps.Size(71, 71),
@@ -57,7 +61,7 @@ $( document ).ready(function() {
         }
 
         infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-        infowindow.open(map, marker);
+        infowindow.open(map2, marker);
       });
 
   }
@@ -131,6 +135,7 @@ $( document ).ready(function() {
     });
 
     $('.filtre').on('change', function () {
+        
         $familleLabel = "famille";
         if ($('.for_family').val() == "on") {
             $familleValue = "1";
@@ -184,7 +189,7 @@ $( document ).ready(function() {
             $disciplineValue = [$('#sport').val(),""];
 
         }
-
+        
         $.ajax({
             type: "GET",
             url: "/getFilterSpotForMap",
@@ -192,7 +197,9 @@ $( document ).ready(function() {
                 typePlageLabel: $typePlageLabel, typePlageValue: $typePlageValue,
             frequentationLabel: $frequentationLabel, frequentationValue: $frequentationValue},
             success: function (data) {
-                console.log(data);
+              
+                console.log(markers);
+
                 for (var i = 0; i < markers.length; i++) {
                     markers[i].setMap(null);
                 }
@@ -211,6 +218,7 @@ $( document ).ready(function() {
                         map: map2,
                         title: "ok"
                     });
+
                     markers.push(marker);
                     marker.addListener('click', function() {
                         infowindow.open(map, marker);

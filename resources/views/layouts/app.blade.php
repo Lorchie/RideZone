@@ -96,7 +96,7 @@
                         @guest
 
                         @else
-                            <li class="dropdown">
+                            <li class="dropdown">   
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     Spot
                                     <span class="caret"></span>
@@ -110,7 +110,7 @@
                            
                             <div class="navbar-form navbar-right">
                                 
-                                <input type="text" class="form-control" placeholder="Rechercher">
+                                <input id="input_search" type="text" class="form-control" placeholder="Rechercher">
                             
                                 <button  class="btn btn-default">Valider</button>
                             </div>
@@ -126,9 +126,7 @@
     @yield('body')
     @yield('pagescript')
 
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBggcVg4ZgQ_92dQlQsOXbuEqXoitmd98c">
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFnoHtO0ZR5ZM916pgDG_b2ADlpxmq5UE&libraries=places"> </script>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>

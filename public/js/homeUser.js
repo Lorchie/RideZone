@@ -78,18 +78,20 @@ module.exports = __webpack_require__(38);
 
 $(document).ready(function () {
 
+    var markers = [];
     var map2;
-
     initMap();
+
+    initSearch();
 
     function initSearch() {
         var input = $("#input_search")[0];
         var autocomplete = new google.maps.places.Autocomplete(input);
-        autocomplete.bindTo('bounds', map);
+        autocomplete.bindTo('bounds', map2);
 
         var infowindow = new google.maps.InfoWindow();
         var marker = new google.maps.Marker({
-            map: map,
+            map: map2,
             anchorPoint: new google.maps.Point(0, -29)
         });
 
@@ -106,10 +108,10 @@ $(document).ready(function () {
 
             // If the place has a geometry, then present it on a map.
             if (place.geometry.viewport) {
-                map.fitBounds(place.geometry.viewport);
+                map2.fitBounds(place.geometry.viewport);
             } else {
-                map.setCenter(place.geometry.location);
-                map.setZoom(17); // Why 17? Because it looks good.
+                map2.setCenter(place.geometry.location);
+                map2.setZoom(17); // Why 17? Because it looks good.
             }
             marker.setIcon( /** @type {google.maps.Icon} */{
                 size: new google.maps.Size(71, 71),
@@ -126,10 +128,36 @@ $(document).ready(function () {
             }
 
             infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
-            infowindow.open(map, marker);
+            infowindow.open(map2, marker);
         });
     }
-  });
+
+    function initMap() {
+
+        var map = $("body").before('<div id="map"></div>');
+
+        //remove useless icon
+        var remove_poi = [{
+            "featureType": "poi",
+            "elementType": "labels",
+            "stylers": [{ "visibility": "off" }]
+        }];
+
+        var latlng = new google.maps.LatLng(47, 1.80);
+        var myOptions = {
+            zoom: 7,
+            center: latlng,
+            streetViewControl: false,
+            disableDefaultUI: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map2 = new google.maps.Map(document.getElementById("map"), myOptions);
+    }
+
+    $.ajax({
+        type: "GET",
+        url: "/getSpotForMap",
+        success: function success(data) {
 
             for (var i = 0; i < data.length; i++) {
                 var obj = data[i];
@@ -162,6 +190,7 @@ $(document).ready(function () {
     });
 
     $('.filtre').on('change', function () {
+
         $familleLabel = "famille";
         if ($('.for_family').val() == "on") {
             $familleValue = "1";
@@ -213,7 +242,9 @@ $(document).ready(function () {
                 typePlageLabel: $typePlageLabel, typePlageValue: $typePlageValue,
                 frequentationLabel: $frequentationLabel, frequentationValue: $frequentationValue },
             success: function success(data) {
-                console.log(data);
+
+                console.log(markers);
+
                 for (var i = 0; i < markers.length; i++) {
                     markers[i].setMap(null);
                 }
@@ -232,6 +263,7 @@ $(document).ready(function () {
                         map: map2,
                         title: "ok"
                     });
+
                     markers.push(marker);
                     marker.addListener('click', function () {
                         infowindow.open(map, marker);
@@ -240,71 +272,6 @@ $(document).ready(function () {
             }
         });
     });
-    function initMap() {
-
-        var map = $("body").before('<div id="map"></div>');
-
-        //remove useless icon
-        var remove_poi = [{
-            "featureType": "poi",
-            "elementType": "labels",
-            "stylers": [{ "visibility": "off" }]
-        }];
-
-        var latlng = new google.maps.LatLng(47, 1.80);
-        var myOptions = {
-            zoom: 7,
-            center: latlng,
-            streetViewControl: false,
-            disableDefaultUI: true,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map2 = new google.maps.Map(document.getElementById("map"), myOptions);
-    }
-
-    $.ajax({
-        type: "GET",
-        url: "/getSpotForMap",
-        success: function success(data) {
-
-            for (var i = 0; i < data.length; i++) {
-                var obj = data[i];
-
-                var contentString = 'Nom: ' + obj.nom + '<br>' + 'Déscription: ' + obj.description + '<br><button type="submit" value="Submit">Voir plus</button>';
-
-                var infowindow = new google.maps.InfoWindow({
-                    content: contentString
-                });
-                var pos = { lat: obj.latitude, lng: obj.longitude };
-
-                marker = new google.maps.Marker({
-                    position: pos,
-                    map: map2,
-                    title: "ok"
-                });
-                marker.addListener('click', function () {
-                    infowindow.open(map, marker);
-                });
-            }
-        }
-    });
-
-    console.log("ok !!!");
-
-    $("#button_filter").click(function () {
-        console.log("fsd");
-        $("#filter_menu").css({ "visibility": "visible" });
-    });
-
-    $("#button_hide_menu").click(function () {
-        $("#filter_menu").css({ "visibility": "hidden" });
-    });
-
-    $('.for_family').on('change', function () {});
-    $('#frequentationSpot').on('change', function () {});
-    $('#typePlage').on('change', function () {});
-    $('#discipline').on('change', function () {});
-    $('#sport').on('change', function () {});
 });
 
 /***/ })
