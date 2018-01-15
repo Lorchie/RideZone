@@ -137,13 +137,23 @@ $( document ).ready(function() {
                 }
                 for (var i = 0; i < data.length; i++) {
                     var obj = data[i];
+
+                    var contentString = 'Nom: ' + obj.nom + '<br>'+ 'Déscription: ' + obj.description + '<br><button type="submit" value="Submit">Voir plus</button>' ;
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
                     var pos = {lat: obj.latitude, lng: obj.longitude};
+
                     marker = new google.maps.Marker({
                         position: pos,
                         map: map2,
                         title: "ok"
                     });
                     markers.push(marker);
+                    marker.addListener('click', function() {
+                        infowindow.open(map, marker);
+                    });
                 }
             }
         });

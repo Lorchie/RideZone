@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ 	return __webpack_require__(__webpack_require__.s = 37);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 44:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(45);
+module.exports = __webpack_require__(38);
 
 
 /***/ }),
 
-/***/ 45:
+/***/ 38:
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
@@ -103,21 +103,30 @@ $(document).ready(function () {
         };
         map2 = new google.maps.Map(document.getElementById("map"), myOptions);
     }
-
     $.ajax({
         type: "GET",
         url: "/getSpotForMap",
         success: function success(data) {
-            console.log(data);
+
             for (var i = 0; i < data.length; i++) {
                 var obj = data[i];
+
+                var contentString = 'Nom: ' + obj.nom + '<br>' + 'Déscription: ' + obj.description + '<br><button type="submit" value="Submit">Voir plus</button>';
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
                 var pos = { lat: obj.latitude, lng: obj.longitude };
+
                 marker = new google.maps.Marker({
                     position: pos,
                     map: map2,
                     title: "ok"
                 });
                 markers.push(marker);
+                marker.addListener('click', function () {
+                    infowindow.open(map, marker);
+                });
             }
         }
     });
@@ -187,13 +196,23 @@ $(document).ready(function () {
                 }
                 for (var i = 0; i < data.length; i++) {
                     var obj = data[i];
+
+                    var contentString = 'Nom: ' + obj.nom + '<br>' + 'Déscription: ' + obj.description + '<br><button type="submit" value="Submit">Voir plus</button>';
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
                     var pos = { lat: obj.latitude, lng: obj.longitude };
+
                     marker = new google.maps.Marker({
                         position: pos,
                         map: map2,
                         title: "ok"
                     });
                     markers.push(marker);
+                    marker.addListener('click', function () {
+                        infowindow.open(map, marker);
+                    });
                 }
             }
         });
