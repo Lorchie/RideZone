@@ -32,8 +32,14 @@ Route::get('/getSpotForMap', 'SpotController@getSpotForMap');
 
 Route::post('/submitSpot', 'SpotController@create');
 
-Route::get('/createPost', function() {
-    return Response::view('spot/createPost');
+Route::post('/submitPost', 'PostController@create');
+
+Route::get('/creerPost', function() {
+    return Response::view('spot/createPost', [
+      'sport_id' => $x,
+      'spot_id' => $y,
+      'discipline_id' => $y
+    ]);
 });
 
 Auth::routes();

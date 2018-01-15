@@ -12,7 +12,18 @@ class SpotController extends Controller
       {
         $user = Auth::user();
 
-     
+        $validatedData = $request->validate([
+          'nom' => 'required|unique:spot|max:255',
+          'description' => 'required|max:255',
+          'photo' => 'required|image',
+          'interdiction' => 'required|string|max:255',
+          'frequentation' => 'required|string|max:255',
+          'famille' => 'required|boolean',
+          'danger' => 'required|string|max:255',
+          'latitude' => 'required',
+          'longitude' => 'required'
+          
+        ]);
 
         $nameSpot = $request->input('nom');
         $descriptionSpot = $request->input('description');
@@ -33,22 +44,6 @@ class SpotController extends Controller
             $path = $request->photo->store('imagesSpots');
           
         }
-
-        
-        $validatedData = $request->validate([
-          'nom' => 'required|unique:spot|max:255',
-          'description' => 'required|max:255',
-          'photo' => 'required|image',
-          'interdiction' => 'required|max:255',
-          'frequentation' => 'required|max:255',
-          'famille' => 'required|boolean',
-          'danger' => 'required|max:255',
-          'latitude' => 'required',
-          'longitude' => 'required'
-          
-          
-        ]);
-
 
         $test = DB::table('spot')->insert(
           [

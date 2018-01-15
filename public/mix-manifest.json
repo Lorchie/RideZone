@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
     "/js/homeUser.js": "/js/homeUser.js",
-    "/js/addSpot.js": "/js/addSpot.js"
+    "/js/addSpot.js": "/js/addSpot.js",
+    "/js/addPost.js": "/js/addPost.js"
 }

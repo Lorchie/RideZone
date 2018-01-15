@@ -8438,10 +8438,30 @@ form {
   height: 30px;
 }
 
+.banner_welcome {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  margin-top: -22px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("/banner_welcome.jpg");
+}
+
 .presentation {
+  position: absolute;
+  bottom: -150px;
   margin-top: 50px;
   text-align: center;
-  color: white;
+  color: #636b6f;
+  padding: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: white;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
 }
 
 .main_text {
@@ -8450,8 +8470,11 @@ form {
 
 .main_title {
   margin-bottom: 30px;
-  font-size: 46px;
+  font-size: 80px;
   font-weight: bold;
+  letter-spacing: 5px;
+  color: #4ab6ff;
+  font-family: good_vibes;
 }
 
 .button_connexion {
@@ -8463,8 +8486,8 @@ form {
   border-radius: 10px;
   font-size: 16px;
   line-height: 40px;
-  -webkit-box-shadow: 0px 0px 20px #0098ff;
-          box-shadow: 0px 0px 20px #0098ff;
+  -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
@@ -8481,8 +8504,8 @@ form {
 .button_connexion:hover {
   width: 230px;
   letter-spacing: 1px;
-  -webkit-box-shadow: 0px 0px 30px #0098ff;
-          box-shadow: 0px 0px 30px #0098ff;
+  -webkit-box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.5);
 }
 
 .navbar-default {
@@ -8569,5 +8592,10 @@ form {
     color: #0599fc;
     background-color: #ffffff;
   }
+}
+
+@font-face {
+  font-family: good_vibes;
+  src: url("/fonts/custom_fonts/good_vibes.ttf");
 }
 

@@ -7,7 +7,7 @@
  
 
 
-  <form id="addSpotForm" method="post" action="/submitSpot" class="col-sm-8 col-md-6 col-md-offset-3 col-sm-offset-2" enctype="multipart/form-data">
+  <form id="addSpotForm" method="post" action="/submitPost" class="col-sm-8 col-md-6 col-md-offset-3 col-sm-offset-2" enctype="multipart/form-data">
 
     @if ($errors->any())
       <div class="alert alert-danger">
@@ -92,7 +92,7 @@
       <label class="form-check-label" for="famille">Le spot est adapté au famille ? </label>
     </div>
 
-    <button type="button" id="submitSpot" class="btn btn-primary">Submit</button>
+    <button type="button" id="submitSpot" class="btn btn-primary btn-lg btn-block">Publier</button>
   </form>
 
 @endsection
