@@ -71,7 +71,7 @@ $( document ).ready(function() {
 
     $('.filtre').on('change', function () {
         $familleLabel = "famille";
-        if ($('.for_family').val() == "on") {
+        if ($('.filtre').val() == "on") {
             $familleValue = "1";
         }
         else {
@@ -129,7 +129,8 @@ $( document ).ready(function() {
             url: "/getFilterSpotForMap",
             data: {familleLabel: $familleLabel, familleValue: $familleValue,
                 typePlageLabel: $typePlageLabel, typePlageValue: $typePlageValue,
-            frequentationLabel: $frequentationLabel, frequentationValue: $frequentationValue},
+            frequentationLabel: $frequentationLabel, frequentationValue: $frequentationValue,
+            },
             success: function (data) {
                 console.log(data);
                 for (var i = 0; i < markers.length; i++) {
