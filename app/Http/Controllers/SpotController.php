@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
-use App\spot;
 use DB;
 
 class SpotController extends Controller
@@ -12,28 +11,43 @@ class SpotController extends Controller
       {
         $user = Auth::user();
 
-        $nameSpot = $request->input('nameSpot');
-        $descriptionSpot = $request->input('descriptionSpot');
+     
+
+        $nameSpot = $request->input('nom');
+        $descriptionSpot = $request->input('description');
         $typePlage =  $request->input('typePlage');
-        $frequentationSpot = $request->input('frequentationSpot');
-        $dangerSpot = $request->input('dangerSpot');
-        $interdictionSpot = $request->input('interdictionSpot');
-        $parkingSpot = $request->input('interdictionSpot');
-        $lat = $request->input('lat');
-        $long = $request->input('long');
+        $frequentationSpot = $request->input('frequentation');
+        $dangerSpot = $request->input('danger');
+        $interdictionSpot = $request->input('interdiction');
+        $parkingSpot = $request->input('accesParking');
+        $lat = $request->input('latitude');
+        $long = $request->input('longitude');
 
         $id = Auth::id();
     
-        if ($_FILES['photoSpot'] > 0) $erreur = "Erreur lors du transfert";
+        if ($_FILES['photo'] > 0) $erreur = "Erreur lors du transfert";
 
-        if($request->hasFile('photoSpot'))
+        if($request->hasFile('photo'))
         {
-            $path = $request->photoSpot->store('imagesSpots');
+            $path = $request->photo->store('imagesSpots');
           
         }
 
         
-        echo ($id);
+        $validatedData = $request->validate([
+          'nom' => 'required|unique:spot|max:255',
+          'description' => 'required|max:255',
+          'photo' => 'required|image',
+          'interdiction' => 'required|max:255',
+          'frequentation' => 'required|max:255',
+          'famille' => 'required|boolean',
+          'danger' => 'required|max:255',
+          'latitude' => 'required',
+          'longitude' => 'required'
+          
+          
+        ]);
+
 
         $test = DB::table('spot')->insert(
           [
@@ -54,13 +68,9 @@ class SpotController extends Controller
           ]
         );
 
-        return "fgd";
+     
+        return redirect()->action('HomeController@index');
         
        
-      }
-
-      protected function getSpotForMap(){
-          $spot=spot::all();
-          return $spot;
       }
 }

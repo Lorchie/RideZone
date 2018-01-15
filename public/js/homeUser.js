@@ -78,48 +78,48 @@ module.exports = __webpack_require__(45);
 
 $(document).ready(function () {
 
-  initMap();
-  var map2;
+    initMap();
+    var map2;
 
-  function initMap() {
+    function initMap() {
 
-    var map = $("body").before('<div id="map"></div>');
+        var map = $("body").before('<div id="map"></div>');
 
-    //remove useless icon
-    var remove_poi = [{
-      "featureType": "poi",
-      "elementType": "labels",
-      "stylers": [{ "visibility": "off" }]
-    }];
+        //remove useless icon
+        var remove_poi = [{
+            "featureType": "poi",
+            "elementType": "labels",
+            "stylers": [{ "visibility": "off" }]
+        }];
 
-    var latlng = new google.maps.LatLng(47, 1.80);
-    var myOptions = {
-      zoom: 7,
-      center: latlng,
-      streetViewControl: false,
-      disableDefaultUI: true,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    map2 = new google.maps.Map(document.getElementById("map"), myOptions);
-  }
-  $.ajax({
-    type: "GET",
-    url: "/getSpotForMap",
-    success: function success(data) {
-      console.log(data);
-      for (var i = 0; i < data.length; i++) {
-        var obj = data[i];
-        var pos = { lat: obj.latitude, lng: obj.longitude };
-        marker = new google.maps.Marker({
-          position: pos,
-          map: map2,
-          title: "ok"
-        });
-      }
+        var latlng = new google.maps.LatLng(47, 1.80);
+        var myOptions = {
+            zoom: 7,
+            center: latlng,
+            streetViewControl: false,
+            disableDefaultUI: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map2 = new google.maps.Map(document.getElementById("map"), myOptions);
     }
-  });
+    $.ajax({
+        type: "GET",
+        url: "/getSpotForMap",
+        success: function success(data) {
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                var obj = data[i];
+                var pos = { lat: obj.latitude, lng: obj.longitude };
+                marker = new google.maps.Marker({
+                    position: pos,
+                    map: map2,
+                    title: "ok"
+                });
+            }
+        }
+    });
 
-  console.log("ok !!!");
+    console.log("ok !!!");
 });
 
 /***/ })

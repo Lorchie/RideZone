@@ -124,9 +124,13 @@ $(document).ready(function () {
     var lat = center.lat();
     var long = center.lng();
 
-    $("#addSpotForm").append('<input type="hidden" name="lat" value="' + lat + '" /> ');
+    $("#addSpotForm").append('<input type="hidden" name="latitude" value="' + lat + '" /> ');
 
-    $("#addSpotForm").append('<input type="hidden" name="long" value="' + long + '" /> ');
+    $("#addSpotForm").append('<input type="hidden" name="longitude" value="' + long + '" /> ');
+
+    if (document.getElementById("family").checked) {
+      document.getElementById('family_hidden').disabled = true;
+    }
 
     console.log($("#addSpotForm").serializeArray());
 
