@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\spot;
+use Illuminate\Support\Facades\DB;
 
 class SpotController extends Controller
 {
@@ -26,5 +27,21 @@ class SpotController extends Controller
       protected function getSpotForMap(){
           $spot=spot::all();
           return $spot;
+      }
+
+      protected function getFilterSpotForMap(Request $request){
+            $familleLabel = $request->familleLabel;
+            $familleValue = $request->familleValue;
+            $typePlageLabel = $request->typePlageLabel;
+            $typePlageValue = $request->typePlageValue;
+            $frequentationLabel = $request->frequentationLabel;
+            $frequentationValue = $request->frequentationValue;
+
+            $spot = DB::table('spot')
+                ->where($familleLabel, $familleValue)
+                ->whereIn($typePlageLabel, $typePlageValue)
+                ->whereIn($frequentationLabel,$frequentationValue)
+                ->get();
+              return $spot;
       }
 }
