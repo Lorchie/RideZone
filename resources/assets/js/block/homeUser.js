@@ -70,14 +70,12 @@ $( document ).ready(function() {
     });
 
     $('.filtre').on('change', function () {
-        $familleLabel = "famille";
-        if ($('.filtre').val() == "on") {
+        if ($('#for_family').prop('checked')) {
             $familleValue = "1";
         }
         else {
             $familleValue = "0";
         }
-        $typePlageLabel = "typePlage";
         $typePlageValue = [];
         if($('#typePlage').val() == "*") {
             $('.optionPlage').each(function () {
@@ -88,7 +86,6 @@ $( document ).ready(function() {
             $typePlageValue = [$('#typePlage').val(),""];
 
         }
-        $frequentationLabel = "frequentation";
         $frequentationValue = [];
         if($('#frequentationSpot').val() == "*") {
             $('.optionFrequentation').each(function () {
@@ -99,9 +96,6 @@ $( document ).ready(function() {
             $frequentationValue = [$('#frequentationSpot').val(),""];
 
         }
-
-
-        $disciplineLabel = "";
         $disciplineValue = [];
         if($('#discipline').val() == "*") {
             $('.optionDiscipline').each(function () {
@@ -112,7 +106,6 @@ $( document ).ready(function() {
             $disciplineValue = [$('#discipline').val(),""];
 
         }
-        $sportLabel =  "";
         $sportValue = [];
         if($('#sport').val() == "*") {
             $('.optionSport').each(function () {
@@ -120,16 +113,20 @@ $( document ).ready(function() {
             });
         }
         else {
-            $disciplineValue = [$('#sport').val(),""];
+            $sportValue = [$('#sport').val(),""];
 
         }
 
         $.ajax({
             type: "GET",
             url: "/getFilterSpotForMap",
-            data: {familleLabel: $familleLabel, familleValue: $familleValue,
-                typePlageLabel: $typePlageLabel, typePlageValue: $typePlageValue,
-            frequentationLabel: $frequentationLabel, frequentationValue: $frequentationValue,
+            data: {familleValue: $familleValue,
+                     typePlageValue: $typePlageValue,
+                     frequentationValue: $frequentationValue,
+                        sportValue: $sportValue,
+                     disiciplineValue: $disciplineValue
+
+
             },
             success: function (data) {
                 console.log(data);

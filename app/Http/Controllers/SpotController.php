@@ -84,19 +84,19 @@ class SpotController extends Controller
 
       protected function getFilterSpotForMap(Request $request){
 
-            $familleLabel = $request->familleLabel;
             $familleValue = $request->familleValue;
-            $typePlageLabel = $request->typePlageLabel;
             $typePlageValue = $request->typePlageValue;
-            $frequentationLabel = $request->frequentationLabel;
             $frequentationValue = $request->frequentationValue;
+            $disciplineValue = $request->disiciplineValue;
+            $sportValue = $request->sportValue;
 
             $spot = DB::table('spot')
-                //->leftJoin('post', 'spot.id', '=', 'post.spot_id')
-                //->where('post.sport_id', '1')
-                ->where($familleLabel, $familleValue)
-                ->whereIn($typePlageLabel, $typePlageValue)
-                ->whereIn($frequentationLabel,$frequentationValue)
+                ->leftJoin('post', 'spot.id', '=', 'post.spot_id')
+                ->where('famille', $familleValue)
+                ->whereIn('typePlage', $typePlageValue)
+                ->whereIn('frequentation',$frequentationValue)
+                ->whereIn('post.discipline_id', $disciplineValue)
+                ->whereIn('post.sport_id', $sportValue)
 
                 ->get();
               return $spot;
