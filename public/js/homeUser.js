@@ -176,7 +176,7 @@ $(document).ready(function () {
                 });
                 markers.push(marker);
                 marker.addListener('click', function () {
-                    infowindow.open(map, marker);
+                    this.infowindow.open(map, marker);
                 });
             }
         }
@@ -192,7 +192,7 @@ $(document).ready(function () {
     $('.filtre').on('change', function () {
 
         $familleLabel = "famille";
-        if ($('.for_family').val() == "on") {
+        if ($('.filtre').val() == "on") {
             $familleValue = "1";
         } else {
             $familleValue = "0";
@@ -240,7 +240,8 @@ $(document).ready(function () {
             url: "/getFilterSpotForMap",
             data: { familleLabel: $familleLabel, familleValue: $familleValue,
                 typePlageLabel: $typePlageLabel, typePlageValue: $typePlageValue,
-                frequentationLabel: $frequentationLabel, frequentationValue: $frequentationValue },
+                frequentationLabel: $frequentationLabel, frequentationValue: $frequentationValue
+            },
             success: function success(data) {
 
                 console.log(markers);
