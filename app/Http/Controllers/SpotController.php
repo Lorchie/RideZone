@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use DB;
+use App\Spot;
 
 class SpotController extends Controller
 {
@@ -73,4 +74,10 @@ class SpotController extends Controller
         
        
       }
+
+      protected function getSpotForMap(){
+        $spot=Spot::all();
+        return $spot;
+      }
+
 }

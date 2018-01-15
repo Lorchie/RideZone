@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ 	return __webpack_require__(__webpack_require__.s = 37);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 44:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(45);
+module.exports = __webpack_require__(38);
 
 
 /***/ }),
 
-/***/ 45:
+/***/ 38:
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
@@ -120,6 +120,21 @@ $(document).ready(function () {
     });
 
     console.log("ok !!!");
+
+    $("#button_filter").click(function () {
+        console.log("fsd");
+        $("#filter_menu").css({ "visibility": "visible" });
+    });
+
+    $("#button_hide_menu").click(function () {
+        $("#filter_menu").css({ "visibility": "hidden" });
+    });
+
+    $('.for_family').on('change', function () {});
+    $('#frequentationSpot').on('change', function () {});
+    $('#typePlage').on('change', function () {});
+    $('#discipline').on('change', function () {});
+    $('#sport').on('change', function () {});
 });
 
 /***/ })
