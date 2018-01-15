@@ -107,15 +107,14 @@
 
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                    <div class="navbar-form navbar-left">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Rechercher">
-                                        </div>
-                                        <button  class="btn btn-default">Valider</button>
-                                    </div>
-
-                            </li>
+                           
+                            <div class="navbar-form navbar-right">
+                                
+                                <input type="text" class="form-control" placeholder="Rechercher">
+                            
+                                <button  class="btn btn-default">Valider</button>
+                            </div>
+                        
                         @endguest
                     </ul>
                 </div>

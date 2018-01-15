@@ -95,8 +95,6 @@
     <button type="button" id="submitSpot" class="btn btn-primary">Submit</button>
   </form>
 
-
-
 @endsection
 
 @section('pagescript')
