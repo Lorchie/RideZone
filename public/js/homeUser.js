@@ -160,29 +160,39 @@ $(document).ready(function () {
         success: function success(data) {
 
             for (var i = 0; i < data.length; i++) {
-
-                var infowindow = new google.maps.InfoWindow();
-                var obj = data[i];
-
-                var contentString = 'Nom: ' + obj.nom + '<br>' + 'Déscription: ' + obj.description + '<br><button type="submit" value="Submit">Voir plus</button>';
-                var pos = { lat: obj.latitude, lng: obj.longitude };
-
-                var marker = new google.maps.Marker({
-                    position: pos,
-                    map: map2,
-                    info: contentString,
-                    title: "ok"
-                });
-
-                google.maps.event.addListener(marker, 'click', function () {
-                    infowindow.setContent(this.info);
-                    infowindow.open(map, this);
-                });
-
-                markers.push(marker);
+                initMarker(data);
             }
         }
     });
+
+    function initMarker(data) {
+        for (var i = 0; i < data.length; i++) {
+
+            var infowindow = new google.maps.InfoWindow();
+            var obj = data[i];
+
+            var contentString = 'Nom: ' + obj.nom + '<br>' + 'Déscription: ' + obj.description + '<br><button class="btn btn-default" id="btn_voir_plus" data-toggle="modal" > Voir plus </button>';
+
+            var pos = { lat: obj.latitude, lng: obj.longitude };
+
+            var marker = new google.maps.Marker({
+                position: pos,
+                map: map2,
+                info: contentString,
+                title: "ok"
+            });
+
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.setContent(this.info);
+                infowindow.open(map, this);
+
+                $('#btn_voir_plus').bind('click', function () {
+                    console.log("putain j'ai réussis");
+                });
+            });
+            markers.push(marker);
+        }
+    }
 
     $("#button_filter").click(function () {
         $("#filter_menu").css({ "visibility": "visible" });
@@ -246,23 +256,7 @@ $(document).ready(function () {
                     markers[i].setMap(null);
                 }
                 for (var i = 0; i < data.length; i++) {
-                    var obj = data[i];
-                    var infowindow = new google.maps.InfoWindow();
-                    var contentString = 'Nom: ' + obj.nom + '<br>' + 'Déscription: ' + obj.description + '<br><button value="Submit">Voir plus</button>';
-
-                    var pos = { lat: obj.latitude, lng: obj.longitude };
-
-                    marker = new google.maps.Marker({
-                        position: pos,
-                        map: map2,
-                        info: contentString,
-                        title: "ok"
-                    });
-                    google.maps.event.addListener(marker, 'click', function () {
-                        infowindow.setContent(this.info);
-                        infowindow.open(map, this);
-                    });
-                    markers.push(marker);
+                    initMarker(data);
                 }
             }
         });
