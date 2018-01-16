@@ -7,7 +7,7 @@
  
 
 
-  <form id="addSpotForm" method="post" action="/submitPost" class="col-sm-8 col-md-6 col-md-offset-3 col-sm-offset-2" enctype="multipart/form-data">
+  <form id="addUserForm" method="post" action="/submitPost" class="col-sm-8 col-md-6 col-md-offset-3 col-sm-offset-2" enctype="multipart/form-data">
 
     @if ($errors->any())
       <div class="alert alert-danger">

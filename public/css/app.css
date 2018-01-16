@@ -8594,3 +8594,26 @@ form {
   src: url("/fonts/custom_fonts/good_vibes.ttf");
 }
 
+/*SPORT USER*/
+
+.state-icon {
+  left: -5px;
+}
+
+.list-group-item-primary {
+  color: white;
+  background-color: #428bca;
+}
+
+.list-group-item {
+  color: black;
+}
+
+.well .list-group {
+  margin-bottom: 0px;
+}
+
+#linkModifyUser {
+  text-decoration: none;
+}
+

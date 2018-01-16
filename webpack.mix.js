@@ -16,4 +16,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
     .js('resources/assets/js/geocomplete.js', 'public/js')
     .js('resources/assets/js/block/addSpot.js', 'public/js')
     .js('resources/assets/js/block/addPost.js', 'public/js')
+    .js('resources/assets/js/block/updateAccount.js','public/js')
+    .js('resources/assets/js/block/sportUser.js','public/js')
     .sass('resources/assets/sass/app.scss', 'public/css');

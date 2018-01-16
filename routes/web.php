@@ -30,7 +30,10 @@ Route::get('/creerSpot', function() {
 
 Route::get('/getSpotForMap', 'SpotController@getSpotForMap');
 Route::get('/getFilterSpotForMap', 'SpotController@getFilterSpotForMap');
-
+Route::get('/showUserAccount', 'UserController@index');
+Route::get('/showUpdateUserAccount', 'UserController@showUpdate');
+Route::post('/submitUpdateUserAccount', 'UserController@update');
+Route::post('/submitUserSport', 'UserController@updateSport');
 Route::post('/submitSpot', 'SpotController@create');
 
 Route::post('/submitPost', 'PostController@create');
