@@ -264,16 +264,9 @@ $(document).ready(function () {
                         info: contentString,
                         title: "ok"
                     });
-<<<<<<< HEAD
-
-                    markers.push(marker);
-                    marker.addListener('click', function () {
-                        infowindow.open(map, marker);
-=======
                     google.maps.event.addListener(marker, 'click', function () {
                         infowindow.setContent(this.info);
                         infowindow.open(map, this);
->>>>>>> master
                     });
                     markers.push(marker);
                 }

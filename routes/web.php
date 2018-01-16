@@ -24,24 +24,33 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/creerSpot', function() {
+
+
+Route::middleware(['auth'])->group(function () {
+
+  Route::get('/creerSpot', function() {
     return Response::view('spot/createSpot');
+  });
+
+  Route::get('/getSpotForMap', 'SpotController@getSpotForMap');
+  Route::get('/getFilterSpotForMap', 'SpotController@getFilterSpotForMap');
+
+  Route::post('/submitSpot', 'SpotController@create');
+
+  Route::post('/submitPost', 'PostController@create');
+
+  Route::get('/creerPost/{x}', function($x) {
+      return Response::view('spot/createPost', [
+        'sport_id' => $x,
+        //'spot_id' => $y,
+        //'discipline_id' => $y
+      ]);
+  })->name("creerSpot");
 });
 
-Route::get('/getSpotForMap', 'SpotController@getSpotForMap');
-Route::get('/getFilterSpotForMap', 'SpotController@getFilterSpotForMap');
 
-Route::post('/submitSpot', 'SpotController@create');
 
-Route::post('/submitPost', 'PostController@create');
 
-Route::get('/creerPost', function() {
-    return Response::view('spot/createPost', [
-      'sport_id' => $x,
-      'spot_id' => $y,
-      'discipline_id' => $y
-    ]);
-});
 
 Auth::routes();
 
