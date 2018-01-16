@@ -170,9 +170,7 @@ $(document).ready(function () {
 
             var infowindow = new google.maps.InfoWindow();
             var obj = data[i];
-
-            var contentString = 'Nom: ' + obj.nom + '<br>' + 'Déscription: ' + obj.description + '<br><button class="btn btn-default" id="btn_voir_plus" data-toggle="modal" > Voir plus </button>';
-
+            var contentString = 'Nom: ' + obj.nom + '<br>' + 'Déscription: ' + obj.description + '<br><button class="test" data-toggle="#myModal" data-spot="' + obj.id + '"> Voir plus </button>';
             var pos = { lat: obj.latitude, lng: obj.longitude };
 
             var marker = new google.maps.Marker({
@@ -186,8 +184,34 @@ $(document).ready(function () {
                 infowindow.setContent(this.info);
                 infowindow.open(map, this);
 
-                $('#btn_voir_plus').bind('click', function () {
-                    console.log("putain j'ai réussis");
+                $('.test').bind('click', function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/getSpot/" + $(this).attr('data-spot'),
+                        success: function success(data) {
+                            $spot = data[0];
+                            $post = data[1];
+
+                            console.log($post);
+                            $("#myModal").find($('.nom')).html($spot.nom);
+                            $("#myModal").find($('.description')).html($spot.description);
+                            $("#myModal").find($('.photo')).html($spot.photo);
+                            $("#myModal").find($('.interdiction')).html($spot.interdiction);
+                            $("#myModal").find($('.type_de_plage')).html($spot.typePlage);
+
+                            if ($spot.famille == 0) {
+                                $stringFamille = "oui";
+                            } else {
+                                $stringFamille = "non";
+                            }
+
+                            $("#myModal").find($('.famille')).html($stringFamille);
+                            $("#myModal").find($('.frequentation')).html($spot.frequentation);
+                            $("#myModal").find($('.danger')).html($spot.danger);
+                            $("#myModal").find($('.acces_parking')).html($spot.accesParking);
+                            $("#myModal").modal();
+                        }
+                    });
                 });
             });
             markers.push(marker);
@@ -256,27 +280,7 @@ $(document).ready(function () {
                     markers[i].setMap(null);
                 }
                 for (var i = 0; i < data.length; i++) {
-<<<<<<< HEAD
-                    var obj = data[i];
-                    var infowindow = new google.maps.InfoWindow();
-                    var contentString = 'Nom: ' + obj.nom + '<br>' + 'Déscription: ' + obj.description + '<br><button value="Submit">Voir plus</button>';
-
-                    var pos = { lat: obj.latitude, lng: obj.longitude };
-
-                    marker = new google.maps.Marker({
-                        position: pos,
-                        map: map2,
-                        info: contentString,
-                        title: "ok"
-                    });
-                    google.maps.event.addListener(marker, 'click', function () {
-                        infowindow.setContent(this.info);
-                        infowindow.open(map, this);
-                    });
-                    markers.push(marker);
-=======
                     initMarker(data);
->>>>>>> master
                 }
             }
         });

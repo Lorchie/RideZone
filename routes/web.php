@@ -33,6 +33,9 @@ Route::middleware(['auth'])->group(function () {
   });
 
   Route::get('/getSpotForMap', 'SpotController@getSpotForMap');
+
+  Route::get('/getSpot/{id}','SpotController@getSpot');
+
   Route::get('/getFilterSpotForMap', 'SpotController@getFilterSpotForMap');
 
   Route::post('/submitSpot', 'SpotController@create');
