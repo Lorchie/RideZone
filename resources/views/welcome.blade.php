@@ -6,10 +6,6 @@
   
     <div class="col-sm-6 col-sm-offset-3 presentation">
       <h1 class="title main_title">Bienvenue sur RideZone</h1>
-
-
-    
-
       <div class="main_text" role="alert">
         <p>  RideZone est un site regroupant les spots de sport de glisse partout en France !
           Vous y trouverez des infos des autres riders pour chacun des posts afin de rider

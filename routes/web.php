@@ -24,9 +24,13 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/creerSpot', function() {
+
+
+Route::middleware(['auth'])->group(function () {
+
+  Route::get('/creerSpot', function() {
     return Response::view('spot/createSpot');
-});
+  });
 
 Route::get('/getSpotForMap', 'SpotController@getSpotForMap');
 Route::get('/getFilterSpotForMap', 'SpotController@getFilterSpotForMap');
@@ -35,16 +39,27 @@ Route::get('/showUpdateUserAccount', 'UserController@showUpdate');
 Route::post('/submitUpdateUserAccount', 'UserController@update');
 Route::post('/submitUserSport', 'UserController@updateSport');
 Route::post('/submitSpot', 'SpotController@create');
+  Route::get('/getSpotForMap', 'SpotController@getSpotForMap');
 
-Route::post('/submitPost', 'PostController@create');
+  Route::get('/getSpot/{id}','SpotController@getSpot');
 
-Route::get('/creerPost', function() {
-    return Response::view('spot/createPost', [
-      'sport_id' => $x,
-      'spot_id' => $y,
-      'discipline_id' => $y
-    ]);
+
+
+
+  Route::post('/submitPost', 'PostController@create');
+
+  Route::get('/creerPost/{x}', function($x) {
+      return Response::view('spot/createPost', [
+        'sport_id' => $x,
+        //'spot_id' => $y,
+        //'discipline_id' => $y
+      ]);
+  })->name("creerSpot");
 });
+
+
+
+
 
 Auth::routes();
 

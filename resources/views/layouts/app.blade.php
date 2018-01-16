@@ -106,20 +106,24 @@
                                 </a>
                                 <ul class="dropdown-menu">
 
-                                    <li><a href="/creerSpot">Créer un Spot</a></li>
+                                    <li><a href="{{ route('creerSpot', ['x' => '12'])}}">Créer un Spot</a></li>
 
                                 </ul>
                             </li>
-                           
-                            <div class="navbar-form navbar-right">
-                                
-                                <input id="input_search" type="text" class="form-control" placeholder="Rechercher">
-                            
-                                <button  class="btn btn-default">Valider</button>
-                            </div>
+
+                          
+                        
+                            <form class="navbar-form navbar-left" role="search">
+                                <div class="form-group"> 
+                                    <input id="input_search" type="text" id="" class="form-control has-search-icon"
+                                        placeholder="Chercher une position" style="width: 100%"> <!-- here -->
+                                </div>
+                            </form>
                         
                         @endguest
                     </ul>
+
+                   
                 </div>
             </div>
         </nav>

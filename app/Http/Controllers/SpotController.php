@@ -94,6 +94,16 @@ class SpotController extends Controller
         return $spot;
       }
 
+    protected function getSpot(Request $request){
+        $id = $request ->id;
+        $spot = Spot::find($id)->first();
+        $post = DB::table('post')
+            ->where('spot_id',$id)
+            ->get();
+        $spot_and_post = array($spot, $post);
+        return $spot_and_post;
+    }
+
       protected function getFilterSpotForMap(Request $request){
 
             $familleValue = $request->familleValue;
