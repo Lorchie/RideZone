@@ -4,7 +4,7 @@
 
   <h1 class="title">Création d'un Spot</h1>
 
- 
+
 
 
   <form id="addSpotForm" method="post" action="/submitSpot" class="col-sm-8 col-md-6 col-md-offset-3 col-sm-offset-2" enctype="multipart/form-data">
@@ -51,8 +51,9 @@
     <div class="form-group">
       <label for="frequentation">Fréquentation</label>
       <select name="frequentation" class="form-control" id="frequentationSpot">
-        <option>1</option>
-        <option>2</option>
+        <option value="faible">Faible</option>
+        <option value="moyen">Moyen</option>
+        <option value="beaucoup">Beaucoup</option>
       </select>
     </div>
 

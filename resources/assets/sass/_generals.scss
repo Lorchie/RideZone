@@ -32,7 +32,11 @@ body
 {
 
   position: absolute;
+  margin-left: 20px;
+  color: white;
+  top: 90px;
   z-index: 999;
+  background-color: $second-color;
 }
 
 #ask_user_position
@@ -43,16 +47,72 @@ body
   position: center;
 }
 
+.filter_title
+{
+  color: #80b7f2;
+  font-weight: bold;
+  text-align: center;
+}
+
+.custom_checkbox
+{
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 5px;
+   outline: none;
+  background-color: white;
+  color: $second-color;
+  font-weight: bold;
+  font-size: 14px;
+  border: 1px solid $second-color;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.checked
+{
+  background-color: $second-color;
+  color: white;
+}
+
+.custom_checkbox:hover
+{
+  background-color: $second-color;
+  color: white;
+}
+
+.group_filter
+{
+  margin-bottom: 20px;
+}
+
+.checkbox_container
+{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.label_filter
+{
+  color: black;
+  margin: 10px;
+  margin-bottom: 5px;
+  color: $second-color;
+  font-weight: bold;
+  font-size: 16px;
+}
+
 #filter_menu {
   position: absolute;
+  padding-top: 60px;
+  height: 100%;
+  top: 0px;
+  left: -250px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  width: 250px;
   z-index: 999;
   background-color: white;
-  visibility: hidden;
-  select {
-    background-color: #3d6983;
-    color: white;
-  }
-  label {
-    color: #3d6983;
-  }
+
+  transition: all 0.3s;
 }
