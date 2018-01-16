@@ -3,9 +3,9 @@ $( document ).ready(function() {
     var markers = [];
     var map2;
     initMap();
-    
+
     initSearch();
-    
+
 
 
 
@@ -95,39 +95,48 @@ $( document ).ready(function() {
                 myOptions);
 
     }
-  
- 
+
+
     $.ajax({
         type: "GET",
         url: "/getSpotForMap",
         success: function(data) {
 
             for (var i = 0; i < data.length; i++) {
-
-                var infowindow = new google.maps.InfoWindow();
-                var obj = data[i];
-
-                var contentString = 'Nom: ' + obj.nom + '<br>'+ 'Déscription: ' + obj.description + '<br><button type="submit" value="Submit">Voir plus</button>' ;
-                var pos = {lat: obj.latitude, lng: obj.longitude};
-
-                var marker = new google.maps.Marker({
-                    position: pos,
-                    map: map2,
-                    info: contentString,
-                    title: "ok"
-                });
-
-                google.maps.event.addListener(marker,'click',function(){
-                    infowindow.setContent(this.info);
-                    infowindow.open(map, this);
-                });
-
-                markers.push(marker);
+                initMarker(data);
             }
         }
     });
 
+    function initMarker(data) {
+        for (var i = 0; i < data.length; i++) {
 
+            var infowindow = new google.maps.InfoWindow();
+            var obj = data[i];
+
+            var contentString = 'Nom: ' + obj.nom + '<br>'+ 'Déscription: ' + obj.description + '<br><button class="btn btn-default" id="btn_voir_plus" data-toggle="modal" > Voir plus </button>' ;
+
+            var pos = {lat: obj.latitude, lng: obj.longitude};
+
+            var marker = new google.maps.Marker({
+                position: pos,
+                map: map2,
+                info: contentString,
+                title: "ok"
+            });
+
+            google.maps.event.addListener(marker,'click',function(){
+                infowindow.setContent(this.info);
+                infowindow.open(map, this);
+
+                $('#btn_voir_plus').bind('click', function () {
+                    console.log("putain j'ai réussis");
+                });
+
+            });
+            markers.push(marker);
+        }
+    }
 
     $("#button_filter").click(function () {
         $("#filter_menu").css({"visibility": "visible"});
@@ -137,15 +146,12 @@ $( document ).ready(function() {
     });
 
     $('.filtre').on('change', function () {
-        
-        $familleLabel = "famille";
-        if ($('.filtre').val() == "on") {
+        if ($('#for_family').prop('checked')) {
             $familleValue = "1";
         }
         else {
             $familleValue = "0";
         }
-        $typePlageLabel = "typePlage";
         $typePlageValue = [];
         if($('#typePlage').val() == "*") {
             $('.optionPlage').each(function () {
@@ -156,7 +162,6 @@ $( document ).ready(function() {
             $typePlageValue = [$('#typePlage').val(),""];
 
         }
-        $frequentationLabel = "frequentation";
         $frequentationValue = [];
         if($('#frequentationSpot').val() == "*") {
             $('.optionFrequentation').each(function () {
@@ -167,9 +172,6 @@ $( document ).ready(function() {
             $frequentationValue = [$('#frequentationSpot').val(),""];
 
         }
-
-
-        $disciplineLabel = "";
         $disciplineValue = [];
         if($('#discipline').val() == "*") {
             $('.optionDiscipline').each(function () {
@@ -180,7 +182,6 @@ $( document ).ready(function() {
             $disciplineValue = [$('#discipline').val(),""];
 
         }
-        $sportLabel =  "";
         $sportValue = [];
         if($('#sport').val() == "*") {
             $('.optionSport').each(function () {
@@ -188,43 +189,28 @@ $( document ).ready(function() {
             });
         }
         else {
-            $disciplineValue = [$('#sport').val(),""];
+            $sportValue = [$('#sport').val(),""];
 
         }
-        
+
         $.ajax({
             type: "GET",
             url: "/getFilterSpotForMap",
-            data: {familleLabel: $familleLabel, familleValue: $familleValue,
-                typePlageLabel: $typePlageLabel, typePlageValue: $typePlageValue,
-            frequentationLabel: $frequentationLabel, frequentationValue: $frequentationValue,
+            data: {familleValue: $familleValue,
+                     typePlageValue: $typePlageValue,
+                     frequentationValue: $frequentationValue,
+                        sportValue: $sportValue,
+                     disiciplineValue: $disciplineValue
+
+
             },
             success: function (data) {
-              
-                console.log(markers);
-
+                console.log(data);
                 for (var i = 0; i < markers.length; i++) {
                     markers[i].setMap(null);
                 }
                 for (var i = 0; i < data.length; i++) {
-                    var obj = data[i];
-                    var infowindow = new google.maps.InfoWindow();
-                    var contentString = 'Nom: ' + obj.nom + '<br>'+ 'Déscription: ' + obj.description + '<br><button value="Submit">Voir plus</button>' ;
-
-
-                    var pos = {lat: obj.latitude, lng: obj.longitude};
-
-                    marker = new google.maps.Marker({
-                        position: pos,
-                        map: map2,
-                        info: contentString,
-                        title: "ok"
-                    });
-                    google.maps.event.addListener(marker,'click',function(){
-                        infowindow.setContent(this.info);
-                        infowindow.open(map, this);
-                    });
-                    markers.push(marker);
+                    initMarker(data);
                 }
             }
         });
