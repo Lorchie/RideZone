@@ -9,16 +9,6 @@
 
   <!-- <button id="ask_user_position"><img src="{{asset("image/gps-location.png")}}"></button> -->
 
-
-@endsection
-@section('body')
-  <button id="button_filter"> <img src="{{asset('image/filter.png')}}"></button>
-  <br>
-
-
-
-
-
   <div id="myModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
 
