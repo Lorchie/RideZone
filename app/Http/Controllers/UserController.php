@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -26,18 +27,21 @@ class UserController extends Controller
         $dataSport = DB::table('sportUser')
                         ->where('user_id', $id)
                        ->get();
-        foreach ($dataSport as $row){
-            $idSportUser[] = ($row->sport_id);
-        }
+
+        $idSportUser = [];
+            foreach ($dataSport as $row){
+                $idSportUser[] = ($row->sport_id);
+            }
+
 
         $sport = $this->getSport();
-        return view('spot/updateUserAccount',['nameUser'=>$name, 'emailUser'=>$email,'sport'=>$sport,'dataSport'=>$idSportUser]);
+      return view('spot/updateUserAccount',['nameUser'=>$name, 'emailUser'=>$email,'sports'=>$sport,'dataSport'=>$idSportUser]);
     }
 
     public function getSport(){
 
-        $sport = DB::table('sport')->get();
-        return $sport;
+        $sports = DB::table('sport')->get();
+        return $sports;
     }
 
 
@@ -50,15 +54,16 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' =>'required|unique:users,id,'.$user->id,
             'email' => 'required|unique:users,email,'.$user->id,
-            //validate minimum 6
-            'password'=>'required_with_all: email,name|confirmed'
+            'password'=>'sometimes|nullable|min:6|required_with_all: email,nom|confirmed'
         ]);
 
         $nom = $request->input('name');
         $email = $request->input('email');
-        if ($request->input('currentPassword') == $user['password']){
+
+        if ( Hash::check($request->input('currentPassword'), $user['password'])){
             if($request->input('password') == $request->input('password_confirmation')){
-                $password = $request->input('password');
+                $password =  bcrypt($request->input('password'));
+
 
                 $ajoutUser = DB::table('users')->where('id',$user['id'])
                     ->update(
@@ -72,18 +77,26 @@ class UserController extends Controller
                     );
             }
         }
+        $sportsUser =  explode(',', $request->input('sportUser'));
+        $ajoutSport = DB::table('sportUser');
+        foreach ($sportsUser as $sportUser){
+            $getUserSport = DB::table('sportUser')->where('user_id', $user->id)->where('sport_id',$sportUser)->get();
+            if( ! count($getUserSport) == 0){
 
-        // vérifier si check en js et retourner le tableau en hidden de la liste des checked
-        // ajouter tout les check if not exist
-        /*$ajoutSport = DB::table('sportUser')
-            ->update(
+            }else{
+
+                $ajoutSport->insert(
+                    [
+                        'user_id' =>$user->id,
+                        'sport_id'=>$sportUser
+                    ]
+                );
+            }
+
+            }
+       return redirect()->action('HomeController@index');
 
 
-            );
-
-*/
-
-        return redirect()->action('HomeController@index');
     }
 
 }

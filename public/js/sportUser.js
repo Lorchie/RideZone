@@ -77,12 +77,12 @@ module.exports = __webpack_require__(48);
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-
+    var sportUser = [];
     $('.list-group.checked-list-box .list-group-item').each(function () {
 
         // Settings
         var $widget = $(this),
-            $checkbox = $('<input type="checkbox" class="hidden" />'),
+            $checkbox = $('<input type="checkbox" class="hidden" name="sportUser" />'),
             color = $widget.data('color') ? $widget.data('color') : "primary",
             style = $widget.data('style') == "button" ? "btn-" : "list-group-item-",
             settings = {
@@ -110,7 +110,6 @@ $(document).ready(function () {
         // Actions
         function updateDisplay() {
             var isChecked = $checkbox.is(':checked');
-
             // Set the button's state
             $widget.data('state', isChecked ? "on" : "off");
 
@@ -140,6 +139,13 @@ $(document).ready(function () {
             }
         }
         init();
+    });
+    $('#submitAccount').on('click', function () {
+        $('.hidden:checked').each(function () {
+            sportUser.push($(this).closest('.list-group-item').val());
+        });
+        $('#addSpotForm').append($('<input type="hidden"  name="sportUser" value="' + sportUser + '"/>'));
+        $('#addSpotForm').submit();
     });
 
     $('#get-checked-data').on('click', function (event) {
