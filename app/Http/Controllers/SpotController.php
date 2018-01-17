@@ -5,7 +5,9 @@ use App\post;
 use Auth;
 use Illuminate\Http\Request;
 use App\spot;
+use App\sport;
 use DB;
+use phpDocumentor\Reflection\Types\Integer;
 
 
 class SpotController extends Controller
@@ -97,6 +99,8 @@ class SpotController extends Controller
         $spot_and_post = array($spot, $post);
         return $spot_and_post;
     }
+
+
 
       protected function getFilterSpotForMap(Request $request){
 

@@ -19,6 +19,7 @@ Route::get('/', function () {
   else {
     return redirect('/home');
   }
+
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -44,6 +45,21 @@ Route::middleware(['auth'])->group(function () {
   Route::post('/submitUpdateUserAccount', 'UserController@update');
   Route::post('/submitUserSport', 'UserController@updateSport');
   Route::post('/submitSpot', 'SpotController@submit');
+  Route::get('/getSpot/{id}','SpotController@getSpot');
+
+
+
+
+
+    Route::post('/submitPost', 'PostController@create');
+
+  Route::get('/creerPost/{x}', function($x) {
+      return Response::view('spot/createPost', [
+        'sport_id' => $x,
+        //'spot_id' => $y,
+        //'discipline_id' => $y
+      ]);
+  })->name("creerPost");
 });
 
 

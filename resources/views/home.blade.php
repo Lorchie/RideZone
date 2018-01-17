@@ -54,6 +54,9 @@
               <h4 style="color:black;"> Accées parking: </h4>
               <label class="acces_parking" style="color: #1f648b"></label><br>
 
+              <table class="table_post">
+
+              </table>
             </div>
           </form>
         </div>

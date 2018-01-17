@@ -51,18 +51,18 @@
                 <div class="well" style="max-height: 300px;overflow: auto;">
                     <ul class="list-group checked-list-box">
 
-                @foreach( $sport as $sports)
-                        @if( in_array($sports->id, $dataSport) )
-                        <li class="list-group-item" data-checked="true">{{$sports->nom}} </li>
+                @foreach( $sports as $sport)
+                        @if( in_array($sport->id, $dataSport) )
+                        <li class="list-group-item" data-checked="true" value="{{$sport->id}}">{{$sport->nom}} </li>
                         @else
-                                <li class="list-group-item">{{$sports->nom}} </li>
+                                <li class="list-group-item" value="{{$sport->id}}">{{$sport->nom}} </li>
                             @endif
                 @endforeach
                     </ul>
                 </div>
             </div>
 
-            <button type="submit" id="submitAccount" class="btn btn-primary btn-lg btn-block">Modifier</button>
+            <button type="button" id="submitAccount" class="btn btn-primary btn-lg btn-block">Modifier</button>
 
 
     </form>
