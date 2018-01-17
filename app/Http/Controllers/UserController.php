@@ -14,7 +14,22 @@ class UserController extends Controller
     //
     public function index()
     {
-        return view('spot/showUserAccount');
+        $dataUser = Auth::user();
+        $id = $dataUser['id'];
+        $name = $dataUser['name'];
+        $email = $dataUser['email'];
+        $dataSport = DB::table('sportUser')
+            ->where('user_id', $id)
+            ->get();
+
+        $idSportUser = [];
+        foreach ($dataSport as $row){
+            $idSportUser[] = ($row->sport_id);
+        }
+
+
+        $sport = $this->getSport();
+        return view('spot/showUserAccount',['nameUser'=>$name, 'emailUser'=>$email,'sports'=>$sport,'dataSport'=>$idSportUser]);
     }
 
     public function showUpdate(){
