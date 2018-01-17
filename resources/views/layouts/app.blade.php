@@ -113,14 +113,9 @@
                                 </ul>
                             </li>
 
+                            @yield('nav_bar')
 
-
-                            <form class="navbar-form navbar-left" role="search">
-                                <div class="form-group">
-                                    <input id="input_search" type="text" id="" class="form-control has-search-icon"
-                                        placeholder="Chercher une position" style="width: 100%"> <!-- here -->
-                                </div>
-                            </form>
+                            
 
                         @endguest
                     </ul>

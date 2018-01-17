@@ -106,7 +106,17 @@ $( document ).ready(function() {
 
             var infowindow = new google.maps.InfoWindow();
             var obj = data[i];
-            var contentString = 'Nom: ' + obj.nom + '<br>'+ 'Déscription: ' + obj.description + '<br><button class="test" data-toggle="#myModal" data-spot="' + obj.id + '"> Voir plus </button>' ;
+
+            var contentString = '<di class="bubble">' +
+            '<div class="bubble_title">' +
+            obj.nom +
+            '</div>' +
+            '<div class="bubble_description">' +
+            obj.description +
+            '</div>' +
+            '<button class="test btn btn-primary btn-block" data-toggle="#myModal" data-spot="' + obj.id + '"> Voir plus </button>' ;
+
+
             var pos = {lat: obj.latitude, lng: obj.longitude};
 
             var marker = new google.maps.Marker({
@@ -187,10 +197,8 @@ $( document ).ready(function() {
 
 
         var data = {};
-
-        var div = $(".checked[name='famille']");
-
-        if(div.length)
+        var divfamille = $(".checked[name='famille']");
+        if(divfamille.length)
         {
           data.famille = $(".checked[name='famille']").val();
         }
@@ -209,7 +217,6 @@ $( document ).ready(function() {
         $("[name='frequentation']").each(function() {
             if($(this).hasClass("checked"))
             {
-              console.log("fsd");
               $frequentationValue.push($(this).val());
             }
 
@@ -220,20 +227,11 @@ $( document ).ready(function() {
         $("[name='sport']").each(function() {
             if($(this).hasClass("checked"))
             {
-              console.log("fsd");
               $frequentationValue.push($(this).val());
             }
 
             data.frequentation = $frequentationValue;
         });
-
-        console.log(data);
-
-        // if($('#typePlage').val() == "*") {
-        //     $('.optionPlage').each(function () {
-        //         $typePlageValue.push($(this).val());
-        //     });
-        // }
 
         $.ajax({
             type: "GET",
