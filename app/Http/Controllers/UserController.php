@@ -17,6 +17,8 @@ class UserController extends Controller
     }
 
     public function showUpdate(){
+
+        // + cas ou idSportUser est null
         $dataUser = Auth::user();
         $id = $dataUser['id'];
         $name = $dataUser['name'];
@@ -48,6 +50,7 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'name' =>'required|unique:users,id,'.$user->id,
             'email' => 'required|unique:users,email,'.$user->id,
+            //validate minimum 6
             'password'=>'required_with_all: email,name|confirmed'
         ]);
 
@@ -70,7 +73,8 @@ class UserController extends Controller
             }
         }
 
-
+        // vérifier si check en js et retourner le tableau en hidden de la liste des checked
+        // ajouter tout les check if not exist
         /*$ajoutSport = DB::table('sportUser')
             ->update(
 
