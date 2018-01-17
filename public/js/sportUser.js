@@ -144,7 +144,7 @@ $(document).ready(function () {
         $('.hidden:checked').each(function () {
             sportUser.push($(this).closest('.list-group-item').val());
         });
-        $('#addSpotForm').append($('<input type="hidden"  name="sportUser[]" value="' + sportUser + '"/>'));
+        $('#addSpotForm').append($('<input type="hidden"  name="sportUser" value="' + sportUser + '"/>'));
         $('#addSpotForm').submit();
     });
 
