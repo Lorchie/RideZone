@@ -43,7 +43,8 @@ Route::post('/submitSpot', 'SpotController@create');
 
 
 
-  Route::post('/submitPost', 'PostController@create');
+
+    Route::post('/submitPost', 'PostController@create');
 
   Route::get('/creerPost/{x}', function($x) {
       return Response::view('spot/createPost', [

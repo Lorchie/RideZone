@@ -188,9 +188,8 @@ $(document).ready(function () {
                         url: "/getSpot/" + $(this).attr('data-spot'),
                         success: function success(data) {
                             $spot = data[0];
-                            $post = data[1];
+                            $posts = data[1];
 
-                            console.log($post);
                             $("#myModal").find($('.nom')).html($spot.nom);
                             $("#myModal").find($('.description')).html($spot.description);
                             $("#myModal").find($('.photo')).html($spot.photo);
@@ -207,6 +206,13 @@ $(document).ready(function () {
                             $("#myModal").find($('.frequentation')).html($spot.frequentation);
                             $("#myModal").find($('.danger')).html($spot.danger);
                             $("#myModal").find($('.acces_parking')).html($spot.accesParking);
+                            console.log($posts);
+                            $($posts).each(function () {
+                                $ligne = $('<tr/>');
+                                console.log(this.bestWindForceMinus);
+                                $('.table_post').append('<tr><td>   Vent optimale: ' + this.bestWindForceMinus + '/' + this.bestWindForceMax + 'Meilleur orientation: ' + this.bestWindDirection + 'Niveau mini:  ' + this.levelMini + 'Danger: ' + this.danger + 'Sport: ' + 'Discipline: ' + '</td></tr>');
+                            });
+
                             $("#myModal").modal();
                         }
                     });
