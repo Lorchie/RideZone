@@ -39,6 +39,8 @@
 </head>
 <body>
 
+    @yield('body')
+
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -99,38 +101,38 @@
                         @guest
 
                         @else
-                            <li class="dropdown">   
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     Spot
                                     <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
 
-                                    <li><a href="{{ route('creerSpot', ['x' => '12'])}}">Créer un Spot</a></li>
+                                    <li><a href="{{ route('creerSpot') }}">Créer un Spot</a></li>
 
                                 </ul>
                             </li>
 
-                          
-                        
+
+
                             <form class="navbar-form navbar-left" role="search">
-                                <div class="form-group"> 
+                                <div class="form-group">
                                     <input id="input_search" type="text" id="" class="form-control has-search-icon"
                                         placeholder="Chercher une position" style="width: 100%"> <!-- here -->
                                 </div>
                             </form>
-                        
+
                         @endguest
                     </ul>
 
-                   
+
                 </div>
             </div>
         </nav>
 
         @yield('content')
     </div>
-    @yield('body')
+
     @yield('pagescript')
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFnoHtO0ZR5ZM916pgDG_b2ADlpxmq5UE&libraries=places"> </script>

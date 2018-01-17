@@ -134,8 +134,6 @@ $(document).ready(function () {
 
     function initMap() {
 
-        var map = $("body").before('<div id="map"></div>');
-
         //remove useless icon
         var remove_poi = [{
             "featureType": "poi",
@@ -219,61 +217,79 @@ $(document).ready(function () {
     }
 
     $("#button_filter").click(function () {
-        $("#filter_menu").css({ "visibility": "visible" });
+        $("#filter_menu").css({ "left": "0" });
     });
+
+    $("#map").click(function () {
+        $("#filter_menu").css({ "left": "-250px" });
+    });
+
     $("#button_hide_menu").click(function () {
         $("#filter_menu").css({ "visibility": "hidden" });
     });
 
-    $('.filtre').on('change', function () {
-        if ($('#for_family').prop('checked')) {
-            $familleValue = "1";
+    $('body').on('click', '.filter_checkbox', function () {
+        //Affichage Checked/Uncheched
+        if ($(this).hasClass("checked")) {
+            $(this).removeClass("checked");
         } else {
-            $familleValue = "0";
+            if ($(this).hasClass("custom_radio")) {
+                var name_radio = $(this).attr("name");
+                $("[name='" + name_radio + "']").removeClass("checked");
+            }
+
+            $(this).addClass("checked");
         }
+
+        var data = {};
+
+        var div = $(".checked[name='famille']");
+
+        if (div.length) {
+            data.famille = $(".checked[name='famille']").val();
+        }
+
         $typePlageValue = [];
-        if ($('#typePlage').val() == "*") {
-            $('.optionPlage').each(function () {
+        $("[name='typePlage']").each(function () {
+            if ($(this).hasClass("checked")) {
                 $typePlageValue.push($(this).val());
-            });
-        } else {
-            $typePlageValue = [$('#typePlage').val(), ""];
-        }
+            }
+
+            data.typePlage = $typePlageValue;
+        });
+
         $frequentationValue = [];
-        if ($('#frequentationSpot').val() == "*") {
-            $('.optionFrequentation').each(function () {
+        $("[name='frequentation']").each(function () {
+            if ($(this).hasClass("checked")) {
+                console.log("fsd");
                 $frequentationValue.push($(this).val());
-            });
-        } else {
-            $frequentationValue = [$('#frequentationSpot').val(), ""];
-        }
-        $disciplineValue = [];
-        if ($('#discipline').val() == "*") {
-            $('.optionDiscipline').each(function () {
-                $disciplineValue.push($(this).val());
-            });
-        } else {
-            $disciplineValue = [$('#discipline').val(), ""];
-        }
+            }
+
+            data.frequentation = $frequentationValue;
+        });
+
         $sportValue = [];
-        if ($('#sport').val() == "*") {
-            $('.optionSport').each(function () {
-                $sportValue.push($(this).val());
-            });
-        } else {
-            $sportValue = [$('#sport').val(), ""];
-        }
+        $("[name='sport']").each(function () {
+            if ($(this).hasClass("checked")) {
+                console.log("fsd");
+                $frequentationValue.push($(this).val());
+            }
+
+            data.frequentation = $frequentationValue;
+        });
+
+        console.log(data);
+
+        // if($('#typePlage').val() == "*") {
+        //     $('.optionPlage').each(function () {
+        //         $typePlageValue.push($(this).val());
+        //     });
+        // }
 
         $.ajax({
             type: "GET",
             url: "/getFilterSpotForMap",
-            data: { familleValue: $familleValue,
-                typePlageValue: $typePlageValue,
-                frequentationValue: $frequentationValue,
-                sportValue: $sportValue,
-                disiciplineValue: $disciplineValue
-
-            },
+            data: data,
             success: function success(data) {
                 console.log(data);
                 for (var i = 0; i < markers.length; i++) {
