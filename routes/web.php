@@ -51,15 +51,9 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-    Route::post('/submitPost', 'PostController@create');
+    Route::post('/submitPost', 'PostController@submit');
 
-  Route::get('/creerPost/{x}', function($x) {
-      return Response::view('spot/createPost', [
-        'sport_id' => $x,
-        //'spot_id' => $y,
-        //'discipline_id' => $y
-      ]);
-  })->name("creerPost");
+  Route::get('/creerPost/{x}',"PostController@create")->name("creerPost");
 });
 
 

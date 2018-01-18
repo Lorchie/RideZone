@@ -68,7 +68,7 @@ class PostController extends Controller
             'user_id' => $id,
             'sport_id' => $sport_id,
             'spot_id' => $spot_id,
-            'discipline_id' => "0"
+            'discipline_id' => "1"
           ]
         );
 

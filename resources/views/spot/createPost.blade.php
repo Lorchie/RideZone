@@ -18,26 +18,24 @@
 
     <form id="addPostForm" method="post" action="/submitPost" class="col-sm-4 col-sm-offset-4">
 
-      <div class="info info_primary" role="alert">
-        Explication d'un post
-      </div>
+
 
       {{ csrf_field() }}
 
       <input name="spot_id" type="hidden" value="{{$data['spot']->id}}">
 
       <div class="form-group">
-        <label for="bestWindForceMinPost">Force du vent</label>
+        <label for="bestWindForceMinPost">Force du vent maximum</label>
         <input type="text" class="form-control" name="bestWindForceMax" id="bestWindForceMinPost" placeholder="Entrer la force minimum du vent" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
       </div>
 
       <div class="form-group">
-        <label for="bestWindForceMaxPost">Force du vent</label>
+        <label for="bestWindForceMaxPost">Force du vent minimum</label>
         <input type="text" class="form-control" name="bestWindForceMinus" id="bestWindForceMaxPost" placeholder="Entrer la force minimum du vent" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
       </div>
 
       <div class="form-group">
-        <label for="levelMiniPost">Niveau de la mer</label>
+        <label for="levelMiniPost">Difficulté ( 0 à 5 )</label>
         <input type="text" class="form-control" name="levelMini" id="levelMiniPost" placeholder="Entrer le niveau de la mère minimum" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
       </div>
 
@@ -73,7 +71,7 @@
 
 
       <button type="submit" id="submitPost" class="btn btn-primary btn-lg btn-block">Publier</button>
-    </from>
+    </form>
 
 
 @endsection

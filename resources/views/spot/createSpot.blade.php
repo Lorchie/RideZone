@@ -22,9 +22,7 @@
 
     {{ csrf_field() }}
 
-    <div class="info info_primary" role="alert">
-      Explication d'un Spot
-    </div>
+
 
     <div class="form-group">
       <label for="nom">Titre</label>
