@@ -26,12 +26,12 @@
 
       <div class="form-group">
         <label for="bestWindForceMinPost">Force du vent maximum</label>
-        <input type="text" class="form-control" name="bestWindForceMax" id="bestWindForceMinPost" placeholder="Entrer la force minimum du vent" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+        <input type="text" class="form-control" name="bestWindForceMax" id="bestWindForceMinPost" value="{{ old('bestWindForceMax') }}" placeholder="Entrer la force minimum du vent" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
       </div>
 
       <div class="form-group">
         <label for="bestWindForceMaxPost">Force du vent minimum</label>
-        <input type="text" class="form-control" name="bestWindForceMinus" id="bestWindForceMaxPost" placeholder="Entrer la force minimum du vent" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+        <input type="text" class="form-control" name="bestWindForceMinus" value="{{ old('bestWindForceMinus') }}" id="bestWindForceMaxPost" value="{{ old('bestWindForceMaxPost') }}" placeholder="Entrer la force minimum du vent" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
       </div>
 
       <div class="form-group">
@@ -41,7 +41,7 @@
 
       <div class="form-group">
         <label for="bestWindDirectionPost">Direction du vent</label>
-        <select class="form-control" name="bestWindDirection" id="bestWindDirectionPost">
+        <select class="form-control" value="{{ old('bestWindDirection') }}" name="bestWindDirection" id="bestWindDirectionPost">
           <option>N</option>
           <option>NE</option>
           <option>E</option>
@@ -60,10 +60,20 @@
       </div>
 
       <div class="form-group">
-        <label for="dangerPost">Sport</label>
-        <select name="sport_id" class="form-control">
+        <label for="sport">Sport</label>
+        <select id="sport" name="sport_id" class="form-control">
           @foreach ($data['sports'] as $sport)
               <option value="{{$sport->id}}" name="sport">{{$sport->nom}}</option>
+          @endforeach
+        </select>
+      </div>
+
+
+      <div class="form-group">
+        <label for="discipline">Discipline</label>
+        <select id="discipline" name="discipline_id" class="form-control">
+          @foreach ($data['disciplines'] as $discipline)
+              <option value="{{$discipline->id}}" name="sport">{{$discipline->nom}}</option>
           @endforeach
         </select>
       </div>

@@ -123,7 +123,7 @@ $( document ).ready(function() {
                 position: pos,
                 map: map2,
                 info: contentString,
-                title: "ok"
+                title: obj.nom
             });
 
             google.maps.event.addListener(marker,'click',function(){
@@ -135,12 +135,12 @@ $( document ).ready(function() {
                         type: "GET",
                         url: "/getSpot/"+$(this).attr('data-spot'),
                         success: function(data) {
-                            console.log(data);
+                            console.log(data[0]);
                             $spot=data[0];
                             $posts=data[1];
                             $("#myModal").find($('.nom')).html($spot.nom);
                             $("#myModal").find($('.description')).html($spot.description);
-                            // $("#myModal").find($('.photo')).html($spot.photo);
+                            $("#myModal").find($('.photo')).html('<img class="img_spot" src="storage/' + $spot.photo + '">');
                             $("#myModal").find($('.interdiction')).html($spot.interdiction);
                             $("#myModal").find($('.type_de_plage')).html($spot.typePlage);
 
@@ -152,7 +152,7 @@ $( document ).ready(function() {
                             $("#myModal").find($('.frequentation')).html($spot.frequentation);
                             $("#myModal").find($('.danger')).html($spot.danger);
                             $("#myModal").find($('.acces_parking')).html($spot.accesParking);
-                            console.log($posts);
+                            $('.tbody').html("");
                             $($posts).each (function(){
                                 $ligne = $('<tr/>');
                                 console.log(this.bestWindForceMinus);
@@ -161,7 +161,7 @@ $( document ).ready(function() {
                                                 this.levelMini+'</td><td>'+
                                                 this.danger+'</td><td>'+
                                                 this.sports.nom+'</td><td>'+
-                                                this.discipline.nom+
+                                                this.discipline.nom +
                                     '</td></tr>');
 
                                 $('.tbody').append($elem1);
@@ -242,10 +242,20 @@ $( document ).ready(function() {
         $("[name='sport']").each(function() {
             if($(this).hasClass("checked"))
             {
-              $frequentationValue.push($(this).val());
+              $sportValue.push($(this).val());
             }
 
-            data.frequentation = $frequentationValue;
+            data.sport = $sportValue;
+        });
+
+        $disciplineValue = [];
+        $("[name='discipline']").each(function() {
+            if($(this).hasClass("checked"))
+            {
+              $disciplineValue.push($(this).val());
+            }
+
+            data.discipline = $disciplineValue;
         });
 
         $.ajax({

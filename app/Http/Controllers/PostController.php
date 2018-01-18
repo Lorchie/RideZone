@@ -8,17 +8,21 @@ use DB;
 use App\Post;
 use Illuminate\Http\Response;
 use App\sport;
+use App\spot;
+use App\discipline;
 
 class PostController extends Controller
 {
     protected function create(Request $request, $spot_id)
     {
 
-        $spot = DB::table('spot')->where('id', $spot_id)->first();
-        $sports = DB::table('sport')->select('id', 'nom')->get();
+        $spot = Spot::where('id', $spot_id)->first();
+        $sports = Sport::select('id', 'nom')->get();
+        $discipline = Discipline::select('id', 'nom')->get();
 
         $data['spot'] = $spot;
         $data['sports'] = $sports;
+        $data['disciplines'] = $discipline;
 
         return view('spot/createPost', ['data' => $data]);
     }
@@ -42,6 +46,8 @@ class PostController extends Controller
           'danger' => 'required|string|max:255',
           'levelMini' => 'required|between:0,5',
           'sport_id' => 'required',
+          'levelMini' => 'required|integer|between:0,10',
+          'discipline_id' => 'required',
           'spot_id' => 'required'
 
 
@@ -54,6 +60,7 @@ class PostController extends Controller
         $danger = $request->input('danger');
         $spot_id = $request->input('spot_id');
         $sport_id = $request->input('sport_id');
+        $discipline = $request->input('discipline_id');
         $user_id = Auth::id();
 
 
@@ -69,7 +76,7 @@ class PostController extends Controller
             'user_id' => $id,
             'sport_id' => $sport_id,
             'spot_id' => $spot_id,
-            'discipline_id' => "1"
+            'discipline_id' => $discipline
           ]
         );
 

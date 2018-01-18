@@ -15,7 +15,7 @@ class SpotController extends Controller
       protected function create(Request $request)
       {
 
-        $sports = DB::table('sport')->select('id', 'nom')->get();
+        $sports = Sport::select('id', 'nom')->get();
 
         return view('spot/createSpot', ['sports' => $sports]);
       }
@@ -24,6 +24,7 @@ class SpotController extends Controller
       protected function submit(Request $request)
       {
         $user = Auth::user();
+
 
         $validatedData = $request->validate([
           'nom' => 'required|unique:spot|max:255',
@@ -56,28 +57,26 @@ class SpotController extends Controller
 
         if($request->hasFile('photo'))
         {
-            $path = $request->photo->store('imagesSpots');
+            $path = $request->photo->store('images', 'public');
 
         }
 
-        $test = DB::table('spot')->insert(
-          [
-            'nom' => $nameSpot,
-            'description' => $descriptionSpot,
-            'photo' => $path,
-            'typePlage' => $typePlage,
-            'interdiction' => $interdictionSpot,
-            'famille' => $familleSpot,
-            'frequentation' => $frequentationSpot,
-            'danger' => $dangerSpot,
-            'accesParking' => $parkingSpot,
-            'longitude' => $long,
-            'latitude' => $lat,
-            'valider' => 'aVerifier',
-            'user_id' => $id
+        $spot = new Spot;
+        $spot->nom = $nameSpot;
+        $spot->description  = $descriptionSpot;
+        $spot->photo  = $path;
+        $spot->typePlage  = $typePlage;
+        $spot->interdiction  = $interdictionSpot;
+        $spot->famille  = $familleSpot;
+        $spot->frequentation  = $frequentationSpot;
+        $spot->danger  = $dangerSpot;
+        $spot->accesParking  = $parkingSpot;
+        $spot->longitude  = $long;
+        $spot->latitude  = $lat;
+        $spot->valider  = "aVerifier";
+        $spot->user_id  = $id;
 
-          ]
-        );
+        $spot->save();
 
 
         return redirect()->action('HomeController@index');
@@ -91,11 +90,10 @@ class SpotController extends Controller
       }
 
     protected function getSpot(Request $request){
-        $id = $request ->id;
+        $id = $request->id;
         $spot = Spot::find($id);
 
         $post = Post::where('spot_id',$id)->with('sports')->with('discipline')->get();
-
 
         $spot_and_post = array($spot, $post);
         return $spot_and_post;
@@ -108,7 +106,8 @@ class SpotController extends Controller
             $familleValue = $request->famille;
             $typePlageValue = $request->typePlage;
             $frequentationValue = $request->frequentation;
-            $sportValue = $request->sportValue;
+            $sportValue = $request->sport;
+            $discipline = $request->discipline;
             $spot = DB::table('spot');
 
 
@@ -129,7 +128,16 @@ class SpotController extends Controller
               $spot->whereIn('frequentation', $frequentationValue);
             }
 
-            // $spot->whereIn('post.sport_id', $sportValue);
+            if($sportValue)
+            {
+              $spot->whereIn('post.sport_id', $sportValue);
+            }
+
+            if($discipline)
+            {
+              $spot->whereIn('post.discipline_id', $discipline);
+            }
+
 
             return $spot->select("spot.*")->get();
 

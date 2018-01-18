@@ -27,7 +27,8 @@ class HomeController extends Controller
     {
 
         $sports = DB::table('sport')->select('id', 'nom')->get();
+        $disciplines = DB::table('disciplines')->select('id', 'nom')->get();
 
-        return view('home', ['sports' => $sports]);
+        return view('home', ['sports' => $sports, 'disciplines' => $disciplines]);
     }
 }

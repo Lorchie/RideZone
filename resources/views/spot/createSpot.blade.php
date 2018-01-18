@@ -27,18 +27,18 @@
     <div class="form-group">
       <label for="nom">Titre</label>
       <input name="nom" type="text" class="form-control"
-      id="nameSpot" placeholder="Entrer le titre du spot">
+      id="nameSpot" value="{{ old('nom') }}" placeholder="Entrer le titre du spot">
     </div>
 
     <div class="form-group">
       <label for="description">Description</label>
       <textarea name="description" type="text"  rows="3" class="form-control vresize"
-      id="descriptionSpot" placeholder="Entrer une description du spot"></textarea>
+      id="descriptionSpot" placeholder="Entrer une description du spot">{{ old('description') }}</textarea>
     </div>
 
     <div class="form-group">
       <label for="typePlage">Type Plage</label>
-      <select name="typePlage" class="form-control" id="typePlage">
+      <select  value="{{ old('typePlage') }}" name="typePlage" class="form-control" id="typePlage">
         <option value="1">Sable</option>
         <option value="2">Galet</option>
         <option value="3">Herbe</option>
@@ -48,7 +48,7 @@
 
     <div class="form-group">
       <label for="frequentation">Fréquentation</label>
-      <select name="frequentation" class="form-control" id="frequentationSpot">
+      <select  value="{{ old('frequentation') }}" name="frequentation" class="form-control" id="frequentationSpot">
         <option value="faible">Faible</option>
         <option value="moyen">Moyen</option>
         <option value="beaucoup">Beaucoup</option>
@@ -57,25 +57,25 @@
 
     <div class="form-group">
       <label for="danger">Danger</label>
-      <textarea  name="danger" type="text"  rows="3" class="form-control vresize"
+      <textarea value="{{ old('danger') }}" name="danger" type="text"  rows="3" class="form-control vresize"
       id="dangerSpot" placeholder="Entrer des éventuels dangers sur le spot"></textarea>
     </div>
 
     <div class="form-group">
       <label for="interdiction">Interdiction</label>
       <textarea name="interdiction" type="text"  rows="3" class="form-control vresize"
-      id="interdictionSpot" placeholder="Entrer des éventuels commentaires sur les interdictions"></textarea>
+      id="interdictionSpot" placeholder="Entrer des éventuels commentaires sur les interdictions">{{ old('interdiction') }}</textarea>
     </div>
 
     <div class="form-group">
       <label for="accesParking">Accès Parking</label>
       <textarea name="accesParking" type="text"  rows="3" class="form-control vresize"
-      id="parkingSpot" placeholder="Entrer des éventuels parking près du spot"></textarea>
+      id="parkingSpot" placeholder="Entrer des éventuels parking près du spot">{{ old('accesParking') }}</textarea>
     </div>
 
     <div class="form-group">
       <label for="photo">Photo</label>
-      <input name="photo" id="photoSpot" type="file">
+      <input value="{{ old('photo') }}" name="photo" id="photoSpot" type="file">
     </div>
 
     <div class="form-map">
