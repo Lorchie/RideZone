@@ -30,7 +30,7 @@
             <div class="bubble_title nom"></div></di>
         </div>
         <div class="modal-body">
-          <form role="form">
+          <form role="form" class="bodyhh">
             <div class="form-group">
 
               <label class="photo" style="color: #1f648b"></label>

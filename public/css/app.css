@@ -8356,6 +8356,10 @@ button.close {
   width: 100%;
 }
 
+.btn_add_post a {
+  color: white;
+}
+
 body {
   color: white;
 }

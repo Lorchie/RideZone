@@ -140,7 +140,7 @@ $( document ).ready(function() {
                             $posts=data[1];
                             $("#myModal").find($('.nom')).html($spot.nom);
                             $("#myModal").find($('.description')).html($spot.description);
-                            $("#myModal").find($('.photo')).html($spot.photo);
+                            // $("#myModal").find($('.photo')).html($spot.photo);
                             $("#myModal").find($('.interdiction')).html($spot.interdiction);
                             $("#myModal").find($('.type_de_plage')).html($spot.typePlage);
 
@@ -166,6 +166,8 @@ $( document ).ready(function() {
 
                                 $('.tbody').append($elem1);
                             });
+                            $('.btn_add_post').remove();
+                            $('.bodyhh').append('<div class="btn btn-block btn-primary btn_add_post"><a href="/creerPost/' + $spot.id+ '">Ajouter post</a></div>');
 
                             $("#myModal").modal();
                         }

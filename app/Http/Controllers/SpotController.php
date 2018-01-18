@@ -92,7 +92,7 @@ class SpotController extends Controller
 
     protected function getSpot(Request $request){
         $id = $request ->id;
-        $spot = Spot::find($id)->first();
+        $spot = Spot::find($id);
 
         $post = Post::where('spot_id',$id)->with('sports')->with('discipline')->get();
 
