@@ -15,7 +15,7 @@ class SpotController extends Controller
       protected function create(Request $request)
       {
 
-        $sports = DB::table('sport')->select('id', 'nom')->get();
+        $sports = Sport::select('id', 'nom')->get();
 
         return view('spot/createSpot', ['sports' => $sports]);
       }
@@ -61,26 +61,22 @@ class SpotController extends Controller
 
         }
 
+        $spot = new Spot;
+        $spot->nom = $nameSpot;
+        $spot->description  = $descriptionSpot;
+        $spot->photo  = $path;
+        $spot->typePlage  = $typePlage;
+        $spot->interdiction  = $interdictionSpot;
+        $spot->famille  = $familleSpot;
+        $spot->frequentation  = $frequentationSpot;
+        $spot->danger  = $dangerSpot;
+        $spot->accesParking  = $parkingSpot;
+        $spot->longitude  = $long;
+        $spot->latitude  = $lat;
+        $spot->valider  = "aVerifier";
+        $spot->user_id  = $id;
 
-
-        $test = DB::table('spot')->insert(
-          [
-            'nom' => $nameSpot,
-            'description' => $descriptionSpot,
-            'photo' => $path,
-            'typePlage' => $typePlage,
-            'interdiction' => $interdictionSpot,
-            'famille' => $familleSpot,
-            'frequentation' => $frequentationSpot,
-            'danger' => $dangerSpot,
-            'accesParking' => $parkingSpot,
-            'longitude' => $long,
-            'latitude' => $lat,
-            'valider' => 'aVerifier',
-            'user_id' => $id
-
-          ]
-        );
+        $spot->save();
 
 
         return redirect()->action('HomeController@index');

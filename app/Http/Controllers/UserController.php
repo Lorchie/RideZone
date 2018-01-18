@@ -59,7 +59,7 @@ class UserController extends Controller
 
     public function getSport(){
 
-        $sports = DB::table('sport')->get();
+        $sports = Sport::All();
         return $sports;
     }
 

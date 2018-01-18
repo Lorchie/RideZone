@@ -8,15 +8,17 @@ use DB;
 use App\Post;
 use Illuminate\Http\Response;
 use App\sport;
+use App\spot;
+use App\discipline;
 
 class PostController extends Controller
 {
     protected function create(Request $request, $spot_id)
     {
 
-        $spot = DB::table('spot')->where('id', $spot_id)->first();
-        $sports = DB::table('sport')->select('id', 'nom')->get();
-        $discipline = DB::table('disciplines')->select('id', 'nom')->get();
+        $spot = Spot::where('id', $spot_id)->first();
+        $sports = Sport::select('id', 'nom')->get();
+        $discipline = Discipline::select('id', 'nom')->get();
 
         $data['spot'] = $spot;
         $data['sports'] = $sports;
