@@ -78,6 +78,7 @@ module.exports = __webpack_require__(48);
 
 $(document).ready(function () {
     var sportUser = [];
+    var NotsportUser = [];
     $('.list-group.checked-list-box .list-group-item').each(function () {
 
         // Settings

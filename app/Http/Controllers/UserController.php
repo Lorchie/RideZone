@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\sport;
+use App\sportUser;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -28,7 +29,10 @@ class UserController extends Controller
         }
 
 
-        $sport = $this->getSport();
+        $sport = sport::
+            leftJoin('sportUser','sport.id' ,'=', 'sportUser.sport_id')
+            ->where('user_id', $id)
+            ->get();
         return view('spot/showUserAccount',['nameUser'=>$name, 'emailUser'=>$email,'sports'=>$sport,'dataSport'=>$idSportUser]);
     }
 
@@ -92,24 +96,20 @@ class UserController extends Controller
                     );
             }
         }
-        $sportsUser =  explode(',', $request->input('sportUser'));
+        $sportsUser =  explode(',',$request->input('sportUser'));
+        $deleteSport = DB::table('sportUser')->where('user_id', $user->id)->delete();
         $ajoutSport = DB::table('sportUser');
-        foreach ($sportsUser as $sportUser){
-            $getUserSport = DB::table('sportUser')->where('user_id', $user->id)->where('sport_id',$sportUser)->get();
-            if( ! count($getUserSport) == 0){
-
-            }else{
-
+        if(! empty($request->input(('sportUser')))) {
+            foreach ($sportsUser as $sportUser) {
                 $ajoutSport->insert(
                     [
-                        'user_id' =>$user->id,
-                        'sport_id'=>$sportUser
+                        'user_id' => $user->id,
+                        'sport_id' => $sportUser
                     ]
                 );
             }
-
-            }
-       return redirect()->action('HomeController@index');
+        }
+            return redirect()->action('UserController@index');
 
 
     }
