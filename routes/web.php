@@ -23,14 +23,14 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+  Route::get('/getFilterSpotForMap', 'SpotController@getFilterSpotForMap');
 Route::middleware(['auth'])->group(function () {
   Route::get('/getPostSport', 'PostController@postSport');
 
 
   Route::get('/creerSpot', 'SpotController@create')->name("creerSpot");
   Route::get('/getSpotForMap', 'SpotController@getSpotForMap');
-  Route::get('/getFilterSpotForMap', 'SpotController@getFilterSpotForMap');
+
   Route::get('/showUserAccount', 'UserController@index');
   Route::get('/showUpdateUserAccount', 'UserController@showUpdate');
 

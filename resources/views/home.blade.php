@@ -142,6 +142,18 @@
         @endforeach
       </div>
     </div>
+
+    <div class="group_filter">
+      <div class="label_filter">Discipline</div>
+      <div class="checkbox_container">
+        @foreach ($disciplines as $discipline)
+            <button value="{{$discipline->id}}" name="discipline" class="custom_checkbox filter_checkbox">
+                {{$discipline->nom}}
+            </button>
+        @endforeach
+      </div>
+    </div>
+
     <br>
   </div>
 

@@ -16,9 +16,11 @@ class PostController extends Controller
 
         $spot = DB::table('spot')->where('id', $spot_id)->first();
         $sports = DB::table('sport')->select('id', 'nom')->get();
+        $discipline = DB::table('disciplines')->select('id', 'nom')->get();
 
         $data['spot'] = $spot;
         $data['sports'] = $sports;
+        $data['disciplines'] = $discipline;
 
         return view('spot/createPost', ['data' => $data]);
     }
@@ -41,6 +43,8 @@ class PostController extends Controller
           'bestWindDirection' => 'required|string',
           'danger' => 'required|string|max:255',
           'sport_id' => 'required',
+          'levelMini' => 'required|integer|between:0,10',
+          'discipline_id' => 'required',
           'spot_id' => 'required'
 
 
@@ -53,6 +57,7 @@ class PostController extends Controller
         $danger = $request->input('danger');
         $spot_id = $request->input('spot_id');
         $sport_id = $request->input('sport_id');
+        $discipline = $request->input('discipline_id');
         $user_id = Auth::id();
 
 
@@ -68,7 +73,7 @@ class PostController extends Controller
             'user_id' => $id,
             'sport_id' => $sport_id,
             'spot_id' => $spot_id,
-            'discipline_id' => "1"
+            'discipline_id' => $discipline
           ]
         );
 

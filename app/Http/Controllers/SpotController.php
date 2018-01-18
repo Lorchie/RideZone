@@ -25,6 +25,7 @@ class SpotController extends Controller
       {
         $user = Auth::user();
 
+
         $validatedData = $request->validate([
           'nom' => 'required|unique:spot|max:255',
           'description' => 'required|max:255',
@@ -56,9 +57,11 @@ class SpotController extends Controller
 
         if($request->hasFile('photo'))
         {
-            $path = $request->photo->store('imagesSpots');
+            $path = $request->photo->store('images', 'public');
 
         }
+
+
 
         $test = DB::table('spot')->insert(
           [
@@ -91,11 +94,10 @@ class SpotController extends Controller
       }
 
     protected function getSpot(Request $request){
-        $id = $request ->id;
+        $id = $request->id;
         $spot = Spot::find($id);
 
         $post = Post::where('spot_id',$id)->with('sports')->with('discipline')->get();
-
 
         $spot_and_post = array($spot, $post);
         return $spot_and_post;
@@ -108,7 +110,8 @@ class SpotController extends Controller
             $familleValue = $request->famille;
             $typePlageValue = $request->typePlage;
             $frequentationValue = $request->frequentation;
-            $sportValue = $request->sportValue;
+            $sportValue = $request->sport;
+            $discipline = $request->discipline;
             $spot = DB::table('spot');
 
 
@@ -129,7 +132,16 @@ class SpotController extends Controller
               $spot->whereIn('frequentation', $frequentationValue);
             }
 
-            // $spot->whereIn('post.sport_id', $sportValue);
+            if($sportValue)
+            {
+              $spot->whereIn('post.sport_id', $sportValue);
+            }
+
+            if($discipline)
+            {
+              $spot->whereIn('post.discipline_id', $discipline);
+            }
+
 
             return $spot->select("spot.*")->get();
 
