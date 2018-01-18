@@ -8,8 +8,8 @@ class sport extends Model
 {
       protected $table = 'sport';
 
-      public function posts(){
-          return $this->hasMany('App\Post','post');
+      public function post() {
+          $this->hasMany('App\Post');
       }
 
 }

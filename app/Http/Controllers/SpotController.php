@@ -111,19 +111,18 @@ class SpotController extends Controller
             $spot = DB::table('spot');
 
 
-            $spot->leftJoin('post', 'spot.id', '=', 'post.spot_id');
+            $spot->leftjoin('post', 'spot.id', '=', 'post.spot_id');
 
             if($familleValue)
             {
               $spot->where('famille', $familleValue);
             }
 
-
             if($typePlageValue)
             {
-
               $spot->whereIn('typePlage', $typePlageValue);
             }
+
             if($frequentationValue)
             {
               $spot->whereIn('frequentation', $frequentationValue);
@@ -131,7 +130,7 @@ class SpotController extends Controller
 
             // $spot->whereIn('post.sport_id', $sportValue);
 
-            return $spot->get();
+            return $spot->select("spot.*")->get();
 
       }
 }

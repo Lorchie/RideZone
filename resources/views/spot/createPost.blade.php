@@ -2,7 +2,8 @@
 
 @section('content')
 
-  <h1 class="title">Création d'un post</h1>
+  <h1 class="title">Création d'un post pour le spot {{$data['spot']->nom}} </h1>
+
 
 
     @if ($errors->any())
@@ -22,6 +23,8 @@
       </div>
 
       {{ csrf_field() }}
+
+      <input name="spot_id" type="hidden" value="{{$data['spot']->id}}">
 
       <div class="form-group">
         <label for="bestWindForceMinPost">Force du vent</label>
@@ -52,10 +55,22 @@
         </select>
       </div>
 
+
       <div class="form-group">
         <label for="dangerPost">Danger</label>
         <textarea  type="text" name="danger" rows="3" class="form-control vresize" id="dangerPost" placeholder="Entrer des éventuels dangers à un instant précis"></textarea>
       </div>
+
+      <div class="form-group">
+        <label for="dangerPost">Sport</label>
+        <select name="sport_id" class="form-control">
+          @foreach ($data['sports'] as $sport)
+              <option value="{{$sport->id}}" name="sport">{{$sport->nom}}</option>
+          @endforeach
+        </select>
+      </div>
+
+
 
       <button type="submit" id="submitPost" class="btn btn-primary btn-lg btn-block">Publier</button>
     </from>
@@ -66,4 +81,3 @@
 @section('pagescript')
   <script src="{{ asset('js/addPost.js') }}"></script>
 @stop
-

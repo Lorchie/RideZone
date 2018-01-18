@@ -1,5 +1,15 @@
 @extends('layouts.app')
 
+
+@section('nav_bar')
+  <form class="navbar-form navbar-left" role="search">
+      <div class="form-group">
+          <input id="input_search" type="text" id="" class="form-control has-search-icon"
+              placeholder="Chercher une position" style="width: 100%"> <!-- here -->
+      </div>
+  </form>
+@endsection
+
 @section('body')
   <div id="map"></div>
 
@@ -43,9 +53,17 @@
 
               <h4 style="color:black;"> Accées parking: </h4>
               <label class="acces_parking" style="color: #1f648b"></label><br>
-
-              <table class="table_post">
-
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th>Vent optimale</th>
+                  <th>Meilleur orientation</th>
+                  <th>Niveau mini</th>
+                  <th>Danger</th>
+                  <th>Sport</th>
+                  <th>Discipline</th>
+                </tr>
+                </thead>
               </table>
             </div>
           </form>
@@ -53,13 +71,6 @@
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
 
 
   <div id="filter_menu" >
