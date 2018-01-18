@@ -35,7 +35,7 @@
       </div>
 
       <div class="form-group">
-        <label for="levelMiniPost">Difficulté ( 0 à 5 )</label>
+        <label for="levelMiniPost">Niveau recommandée (0 à 5)</label>
         <input type="text" class="form-control" name="levelMini" id="levelMiniPost" placeholder="Entrer le niveau de la mère minimum" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
       </div>
 

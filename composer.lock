@@ -809,12 +809,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/bootstrap-fileinput.git",
-                "reference": "1749570767618c046a825dd36f46af45f65cce74"
+                "reference": "abbb43a1b40ac5f0acb0ab336a18e7bbd203b8d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/1749570767618c046a825dd36f46af45f65cce74",
-                "reference": "1749570767618c046a825dd36f46af45f65cce74",
+                "url": "https://api.github.com/repos/kartik-v/bootstrap-fileinput/zipball/abbb43a1b40ac5f0acb0ab336a18e7bbd203b8d7",
+                "reference": "abbb43a1b40ac5f0acb0ab336a18e7bbd203b8d7",
                 "shasum": ""
             },
             "type": "library",
@@ -854,20 +854,20 @@
                 "progress",
                 "upload"
             ],
-            "time": "2018-01-15T10:47:37+00:00"
+            "time": "2018-01-16T16:38:33+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.29",
+            "version": "v5.5.32",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "c58b6ff96fb56cc92e24545870be13cdcfcbc43a"
+                "reference": "254e4c3e133f5bc8d6068cdf28ea062abc10adf2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/c58b6ff96fb56cc92e24545870be13cdcfcbc43a",
-                "reference": "c58b6ff96fb56cc92e24545870be13cdcfcbc43a",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/254e4c3e133f5bc8d6068cdf28ea062abc10adf2",
+                "reference": "254e4c3e133f5bc8d6068cdf28ea062abc10adf2",
                 "shasum": ""
             },
             "require": {
@@ -988,7 +988,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2018-01-15T14:07:47+00:00"
+            "time": "2018-01-18T13:27:23+00:00"
         },
         {
             "name": "laravel/tinker",

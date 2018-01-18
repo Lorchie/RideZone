@@ -40,6 +40,7 @@ class PostController extends Controller
           'bestWindForceMinus' => 'required|integer',
           'bestWindDirection' => 'required|string',
           'danger' => 'required|string|max:255',
+          'levelMini' => 'required|between:0,5',
           'sport_id' => 'required',
           'spot_id' => 'required'
 

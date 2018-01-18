@@ -1,10 +1,9 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
     "/js/geocomplete.js": "/js/geocomplete.js",
     "/js/updateAccount.js": "/js/updateAccount.js",
     "/js/sportUser.js": "/js/sportUser.js",
     "/js/homeUser.js": "/js/homeUser.js",
     "/js/addSpot.js": "/js/addSpot.js",
-    "/js/addPost.js": "/js/addPost.js"
+    "/js/addPost.js": "/js/addPost.js",
+    "/js/app.js": "/js/app.js"
 }
