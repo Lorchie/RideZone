@@ -53,9 +53,17 @@
 
               <h4 style="color:black;"> Accées parking: </h4>
               <label class="acces_parking" style="color: #1f648b"></label><br>
-
-              <table class="table_post">
-
+              <table class="table table-hover">
+                <thead>
+                <tr>
+                  <th>Vent optimale</th>
+                  <th>Meilleur orientation</th>
+                  <th>Niveau mini</th>
+                  <th>Danger</th>
+                  <th>Sport</th>
+                  <th>Discipline</th>
+                </tr>
+                </thead>
               </table>
             </div>
           </form>

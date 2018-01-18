@@ -191,7 +191,6 @@ $(document).ready(function () {
                         success: function success(data) {
                             $spot = data[0];
                             $posts = data[1];
-
                             $("#myModal").find($('.nom')).html($spot.nom);
                             $("#myModal").find($('.description')).html($spot.description);
                             $("#myModal").find($('.photo')).html($spot.photo);
@@ -212,7 +211,9 @@ $(document).ready(function () {
                             $($posts).each(function () {
                                 $ligne = $('<tr/>');
                                 console.log(this.bestWindForceMinus);
-                                $('.table_post').append('<tr><td>   Vent optimale: ' + this.bestWindForceMinus + '/' + this.bestWindForceMax + 'Meilleur orientation: ' + this.bestWindDirection + 'Niveau mini:  ' + this.levelMini + 'Danger: ' + this.danger + 'Sport: ' + 'Discipline: ' + '</td></tr>');
+                                $elem1 = $('<tr><td> ' + this.bestWindForceMinus + '/' + this.bestWindForceMax + '</td><td>' + this.bestWindDirection + '</td><td>' + this.levelMini + '</td><td>' + this.danger + '</td><td>' + 'Sport ' + '</td><td>' + 'Discipline' + '</td></tr>');
+
+                                $('.table-hover').append($elem1);
                             });
 
                             $("#myModal").modal();
