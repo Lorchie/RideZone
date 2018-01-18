@@ -9,6 +9,12 @@ body
 {
   color: white;
 }
+.tbody {
+  color: black;
+}
+.custom_table{
+  color: $body-bg;
+}
 
 
 .title

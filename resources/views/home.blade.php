@@ -26,13 +26,12 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 style="color:red;"> SPOT </h4>
+          <di class="bubble">
+            <div class="bubble_title nom"></div></di>
         </div>
         <div class="modal-body">
           <form role="form">
             <div class="form-group">
-              <h4 style="color:black;"> Nom: </h4>
-              <label class="nom" style="color: #1f648b"></label><br>
 
               <label class="photo" style="color: #1f648b"></label>
 
@@ -53,7 +52,7 @@
 
               <h4 style="color:black;"> Accées parking: </h4>
               <label class="acces_parking" style="color: #1f648b"></label><br>
-              <table class="table table-hover">
+              <table class="table table-hover custom_table">
                 <thead>
                 <tr>
                   <th>Vent optimale</th>
@@ -64,6 +63,9 @@
                   <th>Discipline</th>
                 </tr>
                 </thead>
+                <tbody class="tbody">
+
+                </tbody>
               </table>
             </div>
           </form>

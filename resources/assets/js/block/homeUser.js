@@ -114,7 +114,7 @@ $( document ).ready(function() {
             '<div class="bubble_description">' +
             obj.description +
             '</div>' +
-            '<button class="test btn btn-primary btn-block" data-toggle="#myModal" data-spot="' + obj.id + '"> Voir plus </button>' ;
+            '<button class="test btn btn-primary btn-block" data-toggle="#myModal" data-spot="' + obj.id + '"> Voir plus </button></di>' ;
 
 
             var pos = {lat: obj.latitude, lng: obj.longitude};
@@ -135,6 +135,7 @@ $( document ).ready(function() {
                         type: "GET",
                         url: "/getSpot/"+$(this).attr('data-spot'),
                         success: function(data) {
+                            console.log(data);
                             $spot=data[0];
                             $posts=data[1];
                             $("#myModal").find($('.nom')).html($spot.nom);
@@ -159,11 +160,11 @@ $( document ).ready(function() {
                                                 this.bestWindDirection+'</td><td>'+
                                                 this.levelMini+'</td><td>'+
                                                 this.danger+'</td><td>'+
-                                                'Sport '+'</td><td>'+
-                                                'Discipline'+
+                                                this.sports.nom+'</td><td>'+
+                                                this.discipline.nom+
                                     '</td></tr>');
 
-                                $('.table-hover').append($elem1);
+                                $('.tbody').append($elem1);
                             });
 
                             $("#myModal").modal();

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use App\Post;
+use Illuminate\Http\Response;
+use App\sport;
 
 class PostController extends Controller
 {
@@ -25,9 +27,9 @@ class PostController extends Controller
     {
 
 
-          $post = Post::first();
+        $post = Post::where('spot_id',1)->with('sport')->get();
 
-          return array($post->sport);
+        return $post[0];
     }
 
     protected function submit(Request $request)

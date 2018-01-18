@@ -8360,6 +8360,14 @@ body {
   color: white;
 }
 
+.tbody {
+  color: black;
+}
+
+.custom_table {
+  color: #4ab6ff;
+}
+
 .title {
   text-align: center;
 }

@@ -169,7 +169,7 @@ $(document).ready(function () {
             var infowindow = new google.maps.InfoWindow();
             var obj = data[i];
 
-            var contentString = '<di class="bubble">' + '<div class="bubble_title">' + obj.nom + '</div>' + '<div class="bubble_description">' + obj.description + '</div>' + '<button class="test btn btn-primary btn-block" data-toggle="#myModal" data-spot="' + obj.id + '"> Voir plus </button>';
+            var contentString = '<di class="bubble">' + '<div class="bubble_title">' + obj.nom + '</div>' + '<div class="bubble_description">' + obj.description + '</div>' + '<button class="test btn btn-primary btn-block" data-toggle="#myModal" data-spot="' + obj.id + '"> Voir plus </button></di>';
 
             var pos = { lat: obj.latitude, lng: obj.longitude };
 
@@ -189,6 +189,7 @@ $(document).ready(function () {
                         type: "GET",
                         url: "/getSpot/" + $(this).attr('data-spot'),
                         success: function success(data) {
+                            console.log(data);
                             $spot = data[0];
                             $posts = data[1];
                             $("#myModal").find($('.nom')).html($spot.nom);
@@ -211,9 +212,9 @@ $(document).ready(function () {
                             $($posts).each(function () {
                                 $ligne = $('<tr/>');
                                 console.log(this.bestWindForceMinus);
-                                $elem1 = $('<tr><td> ' + this.bestWindForceMinus + '/' + this.bestWindForceMax + '</td><td>' + this.bestWindDirection + '</td><td>' + this.levelMini + '</td><td>' + this.danger + '</td><td>' + 'Sport ' + '</td><td>' + 'Discipline' + '</td></tr>');
+                                $elem1 = $('<tr><td> ' + this.bestWindForceMinus + '/' + this.bestWindForceMax + '</td><td>' + this.bestWindDirection + '</td><td>' + this.levelMini + '</td><td>' + this.danger + '</td><td>' + this.sports.nom + '</td><td>' + this.discipline.nom + '</td></tr>');
 
-                                $('.table-hover').append($elem1);
+                                $('.tbody').append($elem1);
                             });
 
                             $("#myModal").modal();
