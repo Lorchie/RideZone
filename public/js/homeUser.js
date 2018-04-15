@@ -60,20 +60,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 37);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 1:
+/***/ 37:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(8);
+module.exports = __webpack_require__(38);
 
 
 /***/ }),
 
-/***/ 8:
+/***/ 38:
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
@@ -89,15 +89,8 @@ $(document).ready(function () {
         var autocomplete = new google.maps.places.Autocomplete(input);
         autocomplete.bindTo('bounds', map2);
 
-        var infowindow = new google.maps.InfoWindow();
-        var marker = new google.maps.Marker({
-            map: map2,
-            anchorPoint: new google.maps.Point(0, -29)
-        });
 
         autocomplete.addListener('place_changed', function () {
-            infowindow.close();
-            marker.setVisible(false);
             var place = autocomplete.getPlace();
             if (!place.geometry) {
                 // User entered the name of a Place that was not suggested and
@@ -212,7 +205,7 @@ $(document).ready(function () {
                             $($posts).each(function () {
                                 $ligne = $('<tr/>');
                                 console.log(this.bestWindForceMinus);
-                                $elem1 = $('<tr><td> ' + this.bestWindForceMinus + '/' + this.bestWindForceMax + '</td><td>' + this.bestWindDirection + '</td><td>' + this.levelMini + '</td><td>' + this.danger + '</td><td>' + this.sports.nom + '</td><td>' + this.discipline.nom + '</td></tr>');
+                                $elem1 = $('<tr><td> ' + this.bestWindForceMinus + '/' + this.bestWindForceMax + '</td><td>' + this.bestWindDirection + '</td><td>' + this.levelMini + '</td><td>' + this.danger + '</td><td>' + this.sport.nom + '</td><td>' + this.discipline.nom + '</td></tr>');
 
                                 $('.tbody').append($elem1);
                             });

@@ -14,12 +14,12 @@ $( document ).ready(function() {
             { "visibility": "off" }
           ]
         }
-      ]
+      ];
 
 
       var latlng = new google.maps.LatLng(47, 1.80);
       var myOptions = {
-          zoom: 7,
+          zoom: 5,
           center: latlng,
           gestureHandling: 'greedy',
           zoomControl:true,
@@ -34,15 +34,16 @@ $( document ).ready(function() {
       var marker = new google.maps.Marker({
                   position: latlng,
                   map: map,
-                  title: 'Hello World!'
+                  title: 'Position!'
             });
 
-            google.maps.event.addListener(map, 'center_changed', function() {              
-                window.setTimeout(function() {
-                  var center = map.getCenter();
-                  marker.setPosition(center);
-                }, 0);
-            });
+
+      google.maps.event.addListener(map, 'center_changed', function() {
+          window.setTimeout(function() {
+              var center = map.getCenter();
+              marker.setPosition(center);
+              }, 0);
+      });
   }
 
 

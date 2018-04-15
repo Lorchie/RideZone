@@ -57,8 +57,8 @@
 
     <div class="form-group">
       <label for="danger">Danger</label>
-      <textarea value="{{ old('danger') }}" name="danger" type="text"  rows="3" class="form-control vresize"
-      id="dangerSpot" placeholder="Entrer des éventuels dangers sur le spot"></textarea>
+      <textarea  name="danger" type="text"  rows="3" class="form-control vresize"
+      id="dangerSpot" placeholder="Entrer des éventuels dangers sur le spot">{{ old('danger') }}</textarea>
     </div>
 
     <div class="form-group">
@@ -86,7 +86,7 @@
     </div>
 
     <div class="form-check">
-      <input id="family" name="famille" type="checkbox" value="1" class="form-check-input">
+      <input id="family" name="famille" type="checkbox" value="{{ old('famille') }}" class="form-check-input">
       <input id="family_hidden" type='hidden' value='0' name='famille'>
       <label class="form-check-label" for="famille">Le spot est adapté aux familles ? </label>
     </div>

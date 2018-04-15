@@ -160,7 +160,7 @@ $( document ).ready(function() {
                                                 this.bestWindDirection+'</td><td>'+
                                                 this.levelMini+'</td><td>'+
                                                 this.danger+'</td><td>'+
-                                                this.sports.nom+'</td><td>'+
+                                                this.sport.nom+'</td><td>'+
                                                 this.discipline.nom +
                                     '</td></tr>');
 

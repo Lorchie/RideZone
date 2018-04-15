@@ -46,7 +46,6 @@ class PostController extends Controller
           'danger' => 'required|string|max:255',
           'levelMini' => 'required|between:0,5',
           'sport_id' => 'required',
-          'levelMini' => 'required|integer|between:0,10',
           'discipline_id' => 'required',
           'spot_id' => 'required'
 

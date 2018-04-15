@@ -32,6 +32,7 @@ class SpotController extends Controller
           'photo' => 'required|image',
           'interdiction' => 'required|string|max:255',
           'frequentation' => 'required|string|max:255',
+          'accesParking' => 'required|string|max:255',
           'famille' => 'required|boolean',
           'danger' => 'required|string|max:255',
           'latitude' => 'required',
@@ -93,7 +94,7 @@ class SpotController extends Controller
         $id = $request->id;
         $spot = Spot::find($id);
 
-        $post = Post::where('spot_id',$id)->with('sports')->with('discipline')->get();
+        $post = Post::where('spot_id',$id)->with('sport')->with('discipline')->get();
 
         $spot_and_post = array($spot, $post);
         return $spot_and_post;

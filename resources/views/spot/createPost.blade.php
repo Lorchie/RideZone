@@ -25,18 +25,18 @@
       <input name="spot_id" type="hidden" value="{{$data['spot']->id}}">
 
       <div class="form-group">
-        <label for="bestWindForceMinPost">Force du vent maximum</label>
-        <input type="text" class="form-control" name="bestWindForceMax" id="bestWindForceMinPost" value="{{ old('bestWindForceMax') }}" placeholder="Entrer la force minimum du vent" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+        <label for="bestWindForceMinPost">Force du vent minimum</label>
+        <input type="text" class="form-control" name="bestWindForceMinus" id="bestWindForceMinPost" value="{{ old('bestWindForceMinus') }}" placeholder="Entrer la force minimum du vent" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
       </div>
 
       <div class="form-group">
-        <label for="bestWindForceMaxPost">Force du vent minimum</label>
-        <input type="text" class="form-control" name="bestWindForceMinus" value="{{ old('bestWindForceMinus') }}" id="bestWindForceMaxPost" value="{{ old('bestWindForceMaxPost') }}" placeholder="Entrer la force minimum du vent" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+        <label for="bestWindForceMaxPost">Force du vent maximum</label>
+        <input type="text" class="form-control" name="bestWindForceMax" value="{{ old('bestWindForceMax') }}" id="bestWindForceMaxPost" placeholder="Entrer la force maximum du vent" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
       </div>
 
       <div class="form-group">
         <label for="levelMiniPost">Niveau recommandée (0 à 5)</label>
-        <input type="text" class="form-control" name="levelMini" id="levelMiniPost" placeholder="Entrer le niveau de la mère minimum" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+        <input type="text" class="form-control" name="levelMini" id="levelMiniPost" placeholder="Entrer le niveau de la mère minimum" >
       </div>
 
       <div class="form-group">
@@ -56,7 +56,7 @@
 
       <div class="form-group">
         <label for="dangerPost">Danger</label>
-        <textarea  type="text" name="danger" rows="3" class="form-control vresize" id="dangerPost" placeholder="Entrer des éventuels dangers à un instant précis"></textarea>
+        <textarea  type="text" name="danger" rows="3" value="{{ old('dangerPost') }}" class="form-control vresize" id="dangerPost" placeholder="Entrer des éventuels dangers à un instant précis"></textarea>
       </div>
 
       <div class="form-group">

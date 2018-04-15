@@ -9,8 +9,8 @@ class Sport extends Model
 {
       protected $table = 'sport';
 
-      public function post() {
-          $this->hasMany('App\Post');
-      }
+    public function post() {
+        $this->hasMany('App\Post');
+    }
 
 }

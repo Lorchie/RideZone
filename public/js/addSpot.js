@@ -60,12 +60,20 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 41);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 10:
+/***/ 41:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(42);
+
+
+/***/ }),
+
+/***/ 42:
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
@@ -84,7 +92,7 @@ $(document).ready(function () {
 
     var latlng = new google.maps.LatLng(47, 1.80);
     var myOptions = {
-      zoom: 7,
+      zoom: 5,
       center: latlng,
       gestureHandling: 'greedy',
       zoomControl: true,
@@ -98,7 +106,7 @@ $(document).ready(function () {
     var marker = new google.maps.Marker({
       position: latlng,
       map: map,
-      title: 'Hello World!'
+      title: 'Position!'
     });
 
     google.maps.event.addListener(map, 'center_changed', function () {
@@ -127,14 +135,6 @@ $(document).ready(function () {
     $("#addSpotForm").submit();
   });
 });
-
-/***/ }),
-
-/***/ 3:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(10);
-
 
 /***/ })
 
